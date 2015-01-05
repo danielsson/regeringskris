@@ -10,29 +10,41 @@ namespace Kris {
         class Entity {
 
         public:
-            const int pi = 3; // Approximation
-
+            virtual std::string type() = 0;
         };
 
 
         class Actor : Entity {
+        protected:
+            std::string _name;
 
+        public:
+            Actor(std::string name);
+            virtual std::string const & name();
+            virtual bool act();
         };
+
 
         class Politician : Actor {
 
+        public:
+            Politician(std::string str) : Actor(str) {}
         };
+
 
         class Hero : Actor, Kris::Util::CommandHandler {
 
         public:
+
+            Hero(std::string name) : Actor(name) {};
+            virtual std::string type();
             virtual bool handleCommand(std::string &);
         };
 
 
-        class HousePlant : Actor {
+        /*class HousePlant : Actor {
 
-        };
+        };*/
 
 
         /*

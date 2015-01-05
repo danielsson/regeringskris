@@ -13,11 +13,10 @@ namespace Kris {
 
     private:
         bool isRunning = true;
-        Entities::Hero hero;
         Env::Environment environment;
-
+        Entities::Hero hero;
     public:
-
+        GameEngine();
         void run();
         void requestEnd();
     };

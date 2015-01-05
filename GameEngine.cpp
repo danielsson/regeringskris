@@ -28,3 +28,5 @@ void Kris::GameEngine::requestEnd() {
 
     isRunning = false;
 }
+
+Kris::GameEngine::GameEngine() : hero("merlin") {}
