@@ -3,5 +3,5 @@ project(regeringskris)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
-set(SOURCE_FILES main.cpp GameEngine.cpp)
+set(SOURCE_FILES main.cpp GameEngine.cpp world/entity.cpp world/env.cpp util.cpp)
 add_executable(regeringskris ${SOURCE_FILES})

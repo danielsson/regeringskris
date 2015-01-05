@@ -1,3 +1,4 @@
+#include "../util.h"
 
 #ifndef ENTITY_GUARD
 #define ENTITY_GUARD
@@ -22,8 +23,10 @@ namespace Kris {
 
         };
 
-        class Hero : Actor {
+        class Hero : Actor, Kris::Util::CommandHandler {
 
+        public:
+            virtual bool handleCommand(std::string &);
         };
 
 
