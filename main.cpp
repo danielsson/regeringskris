@@ -5,7 +5,7 @@ using namespace std;
 
 int main() {
 
-    Kris::GameEngine e;
+    kris::GameEngine e;
 
     e.run();
 

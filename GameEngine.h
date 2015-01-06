@@ -6,15 +6,15 @@
 #define GAME_ENGINE_GUARD
 
 
-namespace Kris {
+namespace kris {
 
 
     class GameEngine {
 
     private:
         bool isRunning = true;
-        Env::Environment environment;
-        Entities::Hero hero;
+        std::shared_ptr<env::Environment> environment;
+        entities::Hero hero;
     public:
         GameEngine();
         void run();

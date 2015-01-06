@@ -1,20 +1,20 @@
 #include <iostream>
 #import "GameEngine.h"
+#import <memory>
 
 
-void Kris::GameEngine::run() {
+void kris::GameEngine::run() {
 
     while (isRunning) {
 
         std::string cmd;
         std::getline(std::cin, cmd);
 
-        if(cmd.size() < 2) isRunning = false;
+        if(cmd.size() < 2) break;
 
-        if (!environment.handleCommand(cmd)) {
+        if (!environment->handleCommand(cmd)) {
             if(!hero.handleCommand(cmd)) {
                 std::cout << "Ingen visste vad som behövde göras" << std::endl;
-
             }
         }
 
@@ -24,9 +24,18 @@ void Kris::GameEngine::run() {
 
 }
 
-void Kris::GameEngine::requestEnd() {
+void kris::GameEngine::requestEnd() {
 
     isRunning = false;
 }
 
-Kris::GameEngine::GameEngine() : hero("merlin") {}
+kris::GameEngine::GameEngine() : hero("merlin") {
+
+    entities::GenericItem doll("Barbie", "A small doll");
+    entities::GenericItem apple("Apple", "An edible fruit");
+
+    environment = std::make_shared(env::GenericRoom("lololdirect", "Desc"));
+
+    environment->addItem(doll);
+    environment->addItem(apple);
+}

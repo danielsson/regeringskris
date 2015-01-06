@@ -1,7 +1,7 @@
 #include "util.h"
 
 
-using namespace Kris::Util;
+using namespace kris::util;
 
 std::string CommandHandler::readWord(std::string & str) {
     return "";

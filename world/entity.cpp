@@ -1,7 +1,7 @@
 
 #include "entity.h"
 
-using namespace Kris::Entities;
+using namespace kris::entities;
 
 
 bool Hero::handleCommand(std::string & str) {
@@ -27,3 +27,14 @@ std::string const &Actor::name() {
     return _name;
 }
 
+std::string const &Physible::name() const {
+    return _name;
+}
+
+std::string const &Physible::description() const {
+    return _desc;
+}
+
+std::string GenericItem::type() {
+    return "generic";
+}

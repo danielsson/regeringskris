@@ -3,8 +3,8 @@
 #ifndef UTIL_GUARD
 #define UTIL_GUARD
 
-namespace Kris {
-    namespace Util {
+namespace kris {
+    namespace util {
 
         class CommandHandler {
 

@@ -4,8 +4,8 @@
 #define ENTITY_GUARD
 
 
-namespace Kris {
-    namespace Entities {
+namespace kris {
+    namespace entities {
 
         class Entity {
 
@@ -32,7 +32,7 @@ namespace Kris {
         };
 
 
-        class Hero : Actor, Kris::Util::CommandHandler {
+        class Hero : Actor, kris::util::CommandHandler {
 
         public:
 
@@ -52,15 +52,29 @@ namespace Kris {
          */
 
 
-        class Physible : Entity {
+        class Physible : protected Entity {
 
+        protected:
+            std::string _name;
+            std::string _desc;
+
+        public:
+            virtual std::string const &name() const;
+            virtual std::string const &description() const;
         };
 
         class Container : Physible {
 
         };
 
-        class GenericItem : Physible {
+        class GenericItem : public Physible {
+        public:
+
+            GenericItem(std::string _name, std::string _desc) {
+                this->_desc = _desc;
+                this->_name = _name;
+            }
+            virtual std::string type();
 
         };
 

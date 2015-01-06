@@ -1,8 +1,48 @@
 #include <iostream>
 #include "env.h"
 
-using namespace Kris::Env;
+using namespace kris::env;
 
 bool Environment::handleCommand(std::string & string) {
     return false;
+}
+
+std::shared_ptr<Environment>  Environment::neighbor(Direction direction) {
+    switch (direction) {
+        case N:
+            return n_N;
+        case E:
+            return n_E;
+        case S:
+            return n_S;
+        case W:
+        default:
+            return n_W;
+    }
+}
+
+void Environment::onEntry(kris::entities::Actor actor) {}
+
+bool Environment::onDeparture(kris::entities::Actor actor) {
+    return false;
+}
+
+void Environment::onPick(kris::entities::Physible physible) {
+
+}
+
+void Environment::onDrop(kris::entities::Physible physible) {
+
+}
+
+std::string GenericRoom::directions() {
+    return _directions;
+}
+
+std::string GenericRoom::description() {
+    return _description;
+}
+
+void Environment::addItem(kris::entities::Physible &physible) {
+    items.push_back(physible);
 }
