@@ -1,10 +1,9 @@
-
 #include "entity.h"
 
 using namespace kris::entities;
 
 
-bool Hero::handleCommand(std::string & str) {
+bool Hero::handleCommand(std::string &str) {
     std::cout << str << std::endl;
     return false;
 }
@@ -37,4 +36,24 @@ std::string const &Physible::description() const {
 
 std::string GenericItem::type() {
     return "generic";
+}
+
+Physible *Container::get_item(const std::string &name) {
+
+    for (Physible *p : items) {
+        if (p->name() == name) {
+            return p;
+        }
+    }
+
+    return 0;
+
+}
+
+int Physible::getWeight() const {
+    return weight;
+}
+
+std::string Container::type() {
+    return "container";
 }

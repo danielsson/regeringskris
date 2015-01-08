@@ -13,8 +13,8 @@ namespace kris {
 
     private:
         bool isRunning = true;
-        std::shared_ptr<env::Environment> environment;
-        entities::Hero hero;
+        env::Environment* environment;
+        entities::Hero* hero;
     public:
         GameEngine();
         void run();

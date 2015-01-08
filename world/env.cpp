@@ -7,7 +7,7 @@ bool Environment::handleCommand(std::string & string) {
     return false;
 }
 
-std::shared_ptr<Environment>  Environment::neighbor(Direction direction) {
+Environment*  Environment::neighbor(Direction& direction) {
     switch (direction) {
         case N:
             return n_N;
@@ -41,8 +41,4 @@ std::string GenericRoom::directions() {
 
 std::string GenericRoom::description() {
     return _description;
-}
-
-void Environment::addItem(kris::entities::Physible &physible) {
-    items.push_back(physible);
 }

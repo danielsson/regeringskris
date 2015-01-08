@@ -1,3 +1,4 @@
+#include <vector>
 #include "../util.h"
 
 #ifndef ENTITY_GUARD
@@ -6,6 +7,7 @@
 
 namespace kris {
     namespace entities {
+
 
         class Entity {
 
@@ -57,13 +59,26 @@ namespace kris {
         protected:
             std::string _name;
             std::string _desc;
+            int weight = 1;
 
         public:
             virtual std::string const &name() const;
             virtual std::string const &description() const;
+            virtual int getWeight() const;
         };
 
         class Container : Physible {
+
+        protected:
+            std::vector<entities::Physible*> items;
+
+        public:
+            void add_item(entities::Physible* item) {
+                items.push_back(item);
+            }
+
+            entities::Physible* get_item(const std::string& name);
+            virtual std::string type();
 
         };
 

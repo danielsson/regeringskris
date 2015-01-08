@@ -13,15 +13,11 @@ void kris::GameEngine::run() {
         if(cmd.size() < 2) break;
 
         if (!environment->handleCommand(cmd)) {
-            if(!hero.handleCommand(cmd)) {
+            if(!hero->handleCommand(cmd)) {
                 std::cout << "Ingen visste vad som behövde göras" << std::endl;
             }
         }
-
     }
-
-
-
 }
 
 void kris::GameEngine::requestEnd() {
@@ -29,13 +25,14 @@ void kris::GameEngine::requestEnd() {
     isRunning = false;
 }
 
-kris::GameEngine::GameEngine() : hero("merlin") {
+kris::GameEngine::GameEngine() {
 
-    entities::GenericItem doll("Barbie", "A small doll");
-    entities::GenericItem apple("Apple", "An edible fruit");
+    hero = new entities::Hero("Merlin");
 
-    environment = std::make_shared(env::GenericRoom("lololdirect", "Desc"));
+    entities::GenericItem* doll = new entities::GenericItem("Barbie", "A small doll");
+    entities::GenericItem* apple = new entities::GenericItem("Apple", "An edible fruit");
 
-    environment->addItem(doll);
-    environment->addItem(apple);
+    environment = new env::GenericRoom("lololdirect", "Desc");
+    environment->getItems().add_item(doll);
+    environment->getItems().add_item(apple);
 }

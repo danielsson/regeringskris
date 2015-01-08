@@ -13,12 +13,12 @@ namespace kris {
 
         class Environment : kris::util::CommandHandler {
         protected:
-            std::vector<entities::Physible> items;
+            entities::Container items;
 
-            std::shared_ptr<Environment> n_N;
-            std::shared_ptr<Environment> n_E;
-            std::shared_ptr<Environment> n_S;
-            std::shared_ptr<Environment> n_W;
+            Environment* n_N;
+            Environment* n_E;
+            Environment* n_S;
+            Environment* n_W;
 
 
         public:
@@ -27,7 +27,7 @@ namespace kris {
             virtual bool handleCommand(std::string &);
 
             virtual std::string directions() = 0;
-            virtual std::shared_ptr<Environment>  neighbor(Direction direction);
+            virtual Environment*  neighbor(Direction& direction);
             virtual std::string description() = 0;
 
             virtual void onEntry(entities::Actor);
@@ -40,20 +40,18 @@ namespace kris {
             virtual void onPick(entities::Physible);
             virtual void onDrop(entities::Physible);
 
-            virtual void addItem(entities::Physible &);
 
-
-            std::vector<entities::Physible> const &getItems() const {
+            entities::Container& getItems() {
                 return items;
             }
         };
 
-        class OutdoorEnv : protected Environment {
+        class OutdoorEnv : public Environment {
 
         };
 
 
-        class IndoorEnv : protected Environment {
+        class IndoorEnv : public Environment {
 
         };
 
@@ -65,7 +63,7 @@ namespace kris {
 
         };
 
-        class GenericRoom : IndoorEnv {
+        class GenericRoom : public IndoorEnv {
 
         protected:
             const std::string _directions;
