@@ -20,15 +20,18 @@ namespace kris {
             Environment* n_S;
             Environment* n_W;
 
+            std::string _description;
+            std::string _name;
 
         public:
             Environment() {};
 
             virtual bool handleCommand(std::string &);
 
-            virtual std::string directions() = 0;
+            virtual std::string directions();
             virtual Environment*  neighbor(Direction& direction);
-            virtual std::string description() = 0;
+            virtual std::string description();
+            virtual std::string name() = 0;
 
             virtual void onEntry(entities::Actor);
 
@@ -66,17 +69,19 @@ namespace kris {
         class GenericRoom : public IndoorEnv {
 
         protected:
-            const std::string _directions;
-            const std::string _description;
+            std::string _directions;
 
         public:
-            GenericRoom(std::string _directions, std::string _description)
-                    : _directions(_directions), _description(_description) {
-
+            GenericRoom(std::string name, std::string _description) {
+                this->_name = name;
+                this->_directions = _directions;
+                this->_description = _description;
             }
 
-            virtual std::string directions();
-            virtual std::string description();
+            virtual std::string name() {
+                return _name;
+            }
+
         };
 
 

@@ -1,3 +1,4 @@
+#include <sstream>
 #include "entity.h"
 
 using namespace kris::entities;
@@ -30,7 +31,7 @@ std::string const &Physible::name() const {
     return _name;
 }
 
-std::string const &Physible::description() const {
+std::string Physible::description() const {
     return _desc;
 }
 
@@ -56,4 +57,18 @@ int Physible::getWeight() const {
 
 std::string Container::type() {
     return "container";
+}
+
+std::string Container::description() const {
+    std::stringstream ss;
+
+    ss << name() << "(" << _desc << ")" << std::endl;
+    ss << items.size() << " items:" << std::endl;
+
+    for (entities::Physible* p : items) {
+        ss << p->name() << " " << p->description() << std::endl;
+    }
+
+    return ss.str();
+
 }

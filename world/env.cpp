@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sstream>
 #include "env.h"
 
 using namespace kris::env;
@@ -35,10 +36,17 @@ void Environment::onDrop(kris::entities::Physible physible) {
 
 }
 
-std::string GenericRoom::directions() {
-    return _directions;
+std::string Environment::directions() {
+    return "";
 }
 
-std::string GenericRoom::description() {
-    return _description;
+std::string Environment::description() {
+    std::stringstream ss;
+
+    ss << name() << std::endl;
+    ss << _description << std::endl;
+
+    ss << getItems().description() << std::endl;
+
+    return ss.str();
 }

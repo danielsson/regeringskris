@@ -10,12 +10,13 @@ void kris::GameEngine::run() {
         std::string cmd;
         std::getline(std::cin, cmd);
 
-        if(cmd.size() < 2) break;
+        if(cmd.size() < 2) {
+            requestEnd();
+            continue;
+        }
 
-        if (!environment->handleCommand(cmd)) {
-            if(!hero->handleCommand(cmd)) {
-                std::cout << "Ingen visste vad som behövde göras" << std::endl;
-            }
+        if (cmd == "describe") {
+            std::cout << environment->description() << std::endl;
         }
     }
 }
@@ -32,7 +33,7 @@ kris::GameEngine::GameEngine() {
     entities::GenericItem* doll = new entities::GenericItem("Barbie", "A small doll");
     entities::GenericItem* apple = new entities::GenericItem("Apple", "An edible fruit");
 
-    environment = new env::GenericRoom("lololdirect", "Desc");
+    environment = new env::GenericRoom("Stadsminsterns kontor", "Ett kontor mycket passande för en lägre mellanchef på ett halvstatligt pappersbruk.");
     environment->getItems().add_item(doll);
     environment->getItems().add_item(apple);
 }

@@ -63,7 +63,7 @@ namespace kris {
 
         public:
             virtual std::string const &name() const;
-            virtual std::string const &description() const;
+            virtual std::string description() const;
             virtual int getWeight() const;
         };
 
@@ -79,6 +79,8 @@ namespace kris {
 
             entities::Physible* get_item(const std::string& name);
             virtual std::string type();
+
+            virtual std::string description() const;
 
         };
 
