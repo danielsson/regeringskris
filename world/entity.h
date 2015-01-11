@@ -7,7 +7,7 @@
 
 namespace kris {
     namespace entities {
-
+        class GenericItem;
 
         class Entity {
 
@@ -19,11 +19,19 @@ namespace kris {
         class Actor : Entity {
         protected:
             std::string _name;
+            std::string _description;
+            GenericItem _weakSpot = NULL;
+            bool _givenConsent;
 
         public:
+            Actor(std::string name, std::string desc, GenericItem weakS);
+
             Actor(std::string name);
             virtual std::string const & name();
             virtual bool act();
+            virtual bool offered(GenericItem &);
+            virtual void giveConsent();
+            virtual void rant();
         };
 
 
