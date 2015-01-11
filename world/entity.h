@@ -12,7 +12,7 @@ namespace kris {
         class Entity {
 
         public:
-            virtual std::string type() = 0;
+            static std::string type();
         };
 
 
@@ -53,7 +53,7 @@ namespace kris {
         public:
 
             Hero(std::string name) : Actor(name) {};
-            virtual std::string type();
+            static std::string type();
 
         };
 
@@ -102,11 +102,13 @@ namespace kris {
         class GenericItem : public Physible {
         public:
 
-            GenericItem(std::string _name, std::string _desc) {
+            GenericItem(std::string _name, std::string _desc, int weight) {
                 this->_desc = _desc;
+                this->weight = weight;
                 this->_name = _name;
             }
-            virtual std::string type();
+
+            static std::string type();
 
         };
 

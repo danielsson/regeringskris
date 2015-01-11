@@ -98,7 +98,7 @@ std::string Physible::description() const {
 }
 
 std::string GenericItem::type() {
-    return "generic";
+    return "GenericItem";
 }
 
 Physible *Container::get_item(const std::string &name) {
@@ -118,7 +118,7 @@ int Physible::getWeight() const {
 }
 
 std::string Container::type() {
-    return "container";
+    return "Container";
 }
 
 std::string Container::description() const {
@@ -141,4 +141,8 @@ bool Physible::use() {
 
 bool Politician::consent() {
     return _givenConsent;
+}
+
+std::string Entity::type() {
+    return "Entity";
 }

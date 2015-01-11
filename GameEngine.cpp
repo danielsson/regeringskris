@@ -31,12 +31,12 @@ void kris::GameEngine::print_welcome() {
     std::ifstream w_file ("intro.txt");
     if (w_file.is_open()) {
         while (getline(w_file, line)) {
-            std::cout << line << std::__1::endl;
+            std::cout << line << std::endl;
         }
 
         w_file.close();
     } else {
-        std::cout << "File not found: intro.txt" << std::__1::endl;
+        std::cout << "File not found: intro.txt" << std::endl;
     }
 }
 
@@ -107,7 +107,7 @@ void kris::GameEngine::cmd_describe(std::vector<std::string> const & d) {
 
 void kris::GameEngine::init_router() {
     router["beskriv"] = &GameEngine::cmd_describe;
-    router["sluta"] = &GameEngine::requestEnd;
+    router["avgå"] = &GameEngine::requestEnd;
     router["hjälp"] = &GameEngine::cmd_help;
     router["gå"] = &GameEngine::cmd_go;
 }

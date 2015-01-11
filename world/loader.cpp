@@ -13,8 +13,35 @@ using namespace kris::entities;
 using json = nlohmann::json;
 
 
+std::string getDefault(json &obj, std::string key, std::string _default) {
+
+    if(obj.find(key) != obj.end()) {
+        return obj[key];
+    } else {
+        return _default;
+    }
+}
+int getDefault(json &obj, std::string key, int _default) {
+
+    if(obj.find(key) != obj.end()) {
+        return obj[key];
+    } else {
+        return _default;
+    }
+}
+
 void read_item(json &obj, Environment* env) {
 
+    std::string id = obj["@id"];
+    std::string name = obj["name"];
+    std::string description = getDefault(obj, "description", "");
+    int weight = getDefault(obj, "weight", 1);
+
+    if (obj["@type"] == GenericItem::type()) {
+        env->getItems().add_item(new GenericItem(name, description, weight));
+    } else {
+        std::cerr << "Unknown item @type " << obj["@type"] << std::endl;
+    }
 }
 
 
@@ -79,7 +106,7 @@ Environment *Loader::construct() {
 
     assert(obj["@type"] == "World");
 
-    std::string start_location = obj["start"];
+    const std::string start_location = obj["start"];
 
     read_environments(obj["rooms"], environments);
 
