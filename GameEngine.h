@@ -11,7 +11,7 @@ namespace kris {
 
     class GameEngine;
 
-    typedef void (GameEngine::*CommandDealer)(std::string const&);
+    typedef void (GameEngine::*CommandDealer)(std::vector<std::string> const &);
 
     class GameEngine {
 
@@ -26,19 +26,21 @@ namespace kris {
         void init_router();
         void print_welcome();
 
+        std::vector<std::string> tokenize(const std::string &);
+
     public:
         GameEngine();
         void run();
-        void requestEnd(std::string const &);
+        void requestEnd(std::vector<std::string> const &);
 
 
-        void cmd_describe(std::string const&);
-        void cmd_go(std::string const &);
-        void cmd_give(std::string const &);
-        void cmd_steal(std::string const &);
-        void cmd_use(std::string const &);
+        void cmd_describe(std::vector<std::string> const &);
+        void cmd_go(std::vector<std::string> const &);
+        void cmd_give(std::vector<std::string> const &);
+        void cmd_steal(std::vector<std::string> const &);
+        void cmd_use(std::vector<std::string> const &);
 
-        void cmd_help(std::string const &);
+        void cmd_help(std::vector<std::string> const &);
 
 
     };
