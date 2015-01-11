@@ -7,7 +7,7 @@
 
 namespace kris {
     namespace entities {
-
+        class GenericItem;
 
         class Entity {
 
@@ -19,18 +19,32 @@ namespace kris {
         class Actor : Entity {
         protected:
             std::string _name;
+            std::string _description;
+            GenericItem _weakSpot = NULL;
 
         public:
+            Actor(std::string name, std::string desc, GenericItem weakS);
+
             Actor(std::string name);
             virtual std::string const & name();
             virtual bool act();
+            virtual bool offered(GenericItem &);
+            virtual void rant();
         };
 
 
         class Politician : Actor {
+        protected:
+            bool _givenConsent;
 
         public:
-            Politician(std::string str) : Actor(str) {}
+            virtual bool offered(GenericItem &);
+            Politician(std::string str) : Actor(str) {
+                _givenConsent = false;
+            }
+            virtual void giveConsent();
+            virtual void rant();
+            bool consent();
         };
 
 
@@ -65,6 +79,7 @@ namespace kris {
             virtual std::string const &name() const;
             virtual std::string description() const;
             virtual int getWeight() const;
+            virtual bool use();
         };
 
         class Container : Physible {

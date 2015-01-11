@@ -26,12 +26,7 @@
 					"name": "Penna"
 				}
 
-			],
-
-			"actors": {
-				
-			}
-
+			]
 		},
 
 		{
@@ -53,6 +48,50 @@
 			]
 		}
 	],
+
+  "actors": [
+	{
+	  "@id": "@annie_lööf",
+	  "@type": "Politician",
+
+	  "name": "Annie Lööf",
+	},
+
+	{
+	  "@id": "@asa_romson",
+	  "@type": "Politician",
+
+	  "name": "Åsa Romson",
+	},
+
+	{
+	  "@id": "@fredrik_reinfeldt",
+	  "@type": "Actor",
+
+	  "name": "Fredrik Reinfeldt",
+	},
+
+	{
+	  "@id": "@kinberg_batra",
+	  "@type": "Politician",
+
+	  "name": "Anna Kinberg Batra",
+	},
+
+	{
+	  "@id": "@magdalena_andersson",
+	  "@type": "Politician",
+
+	  "name": "Magdalena Andersson",
+	},
+
+	{
+	  "@id": "@goran_persson",
+	  "@type": "Actor",
+
+	  "name": "Göran Persson",
+	}
+  ],
 
 	"neighbors": {
 		"@kontor": {

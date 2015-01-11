@@ -48,7 +48,7 @@ void kris::GameEngine::requestEnd(std::vector<std::string> const & d) {
 void kris::GameEngine::cmd_go(std::vector<std::string> const &words) {
 
     if (words.size() < 2) {
-        std::cout << "Vars är du på väg, din lilla ärta?" << std::endl;
+        std::cout << "Vars är du på väg?" << std::endl;
         return;
     }
 
@@ -106,10 +106,10 @@ void kris::GameEngine::cmd_describe(std::vector<std::string> const & d) {
 
 
 void kris::GameEngine::init_router() {
-    router["describe"] = &GameEngine::cmd_describe;
-    router["quit"] = &GameEngine::requestEnd;
-    router["help"] = &GameEngine::cmd_help;
-    router["go"] = &GameEngine::cmd_go;
+    router["beskriv"] = &GameEngine::cmd_describe;
+    router["sluta"] = &GameEngine::requestEnd;
+    router["hjälp"] = &GameEngine::cmd_help;
+    router["gå"] = &GameEngine::cmd_go;2
 }
 
 kris::GameEngine::GameEngine() : loader("die_welt.json") {

@@ -1,0 +1,25 @@
+PROJECT REGERINGSKRIS
+
+collect everything in namespace kaos
+
+
+
+Entity
+– Actor
+	- Human
+	– Politician
+	– Hero
+
+– Physible
+	– Item
+		– Edible
+		– Container
+			– Purse
+
+
+
+Environment
+– Outdoor
+	– Sergerls Torg
+– Indoor
+	– Åsiktskorridor
