@@ -65,6 +65,7 @@ namespace kris {
             virtual std::string const &name() const;
             virtual std::string description() const;
             virtual int getWeight() const;
+            virtual bool use();
         };
 
         class Container : Physible {

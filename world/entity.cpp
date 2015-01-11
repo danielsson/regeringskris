@@ -63,12 +63,16 @@ std::string Container::description() const {
     std::stringstream ss;
 
     ss << name() << "(" << _desc << ")" << std::endl;
-    ss << items.size() << " items:" << std::endl;
+    ss << items.size() << " saker:" << std::endl;
 
     for (entities::Physible* p : items) {
-        ss << p->name() << " " << p->description() << std::endl;
+        ss << p->name() << " – " << p->description() << std::endl;
     }
 
     return ss.str();
 
+}
+
+bool Physible::use() {
+    return false;
 }
