@@ -21,7 +21,7 @@ void kris::GameEngine::run() {
         if(router.find(command) != router.end()) {
             (this->*router[command])(tokens);
         } else {
-            std::cout << "Ingen visste vad du menade, så det skickades på remiss till KU efter att någun funnit det kränkande." << std::endl;
+            std::cout << "Ingen visste vad du menade, men någon fann det kränkande och anmälde det till KU";
         }
     }
 }
