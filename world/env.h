@@ -20,10 +20,10 @@ namespace kris {
         protected:
             entities::Container items;
 
-            Environment* n_N;
-            Environment* n_E;
-            Environment* n_S;
-            Environment* n_W;
+            Environment* n_N = 0;
+            Environment* n_E = 0;
+            Environment* n_S = 0;
+            Environment* n_W = 0;
 
             std::string _description;
             std::string _name;

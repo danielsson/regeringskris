@@ -55,11 +55,11 @@ std::string Environment::type() {
 Direction Environment::fromString(std::string str) {
     Direction direction;
 
-    if (str == "n") {
+    if (str == "n" || str == "N") {
         direction = Direction::N;
-    } else if (str == "e") {
+    } else if (str == "e" || str == "E") {
         direction = Direction::E;
-    } else if (str == "s") {
+    } else if (str == "s" || str == "S") {
         direction = Direction::S;
     } else {
         direction = Direction::W;
