@@ -16,6 +16,20 @@ std::map<std::string, Party> Entity::partyMapping{
         {"P", P}
 };
 
+std::map<Party, std::string> Entity::partyMappingReversed{
+        {VPK,"VPK"},
+        {S, "S"},
+        {MP, "MP"},
+        {C, "C"},
+        {KD, "KD"},
+        {FP, "FP"},
+        {M, "M"},
+        {SD, "SD"},
+        {FI, "FI"},
+        {P, "P"}
+};
+
+
 std::string Hero::type() {
     return "hero";
 }
@@ -160,6 +174,14 @@ std::string Actor::describe() {
     std::stringstream ss;
 
     ss << name() << " - " << _description << std::endl;
+
+    return ss.str();
+}
+
+std::string Politician::describe() {
+    std::stringstream ss;
+
+    ss << name() << "(" << partyMappingReversed[affiliation] << ") - " << _description << std::endl;
 
     return ss.str();
 }

@@ -11,8 +11,6 @@ namespace kris {
 
         enum Party {
             VPK, S, MP, C, KD, FP, M, SD, FI, P
-
-
         };
 
 
@@ -24,6 +22,8 @@ namespace kris {
         public:
             static std::string type();
             static std::map<std::string, Party> partyMapping;
+
+            static std::map<Party, std::string> partyMappingReversed;
         };
 
 
@@ -61,6 +61,7 @@ namespace kris {
             virtual void giveConsent();
             virtual void rant();
             bool consent();
+            virtual std::string describe();
 
             Party getAffiliation() {
                 return affiliation;
