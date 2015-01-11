@@ -58,9 +58,7 @@ namespace kris {
         };
 
 
-        /*class HousePlant : Actor {
 
-        };*/
 
 
         /*
@@ -102,9 +100,9 @@ namespace kris {
         class GenericItem : public Physible {
         public:
 
-            GenericItem(std::string _name, std::string _desc, int weight) {
+            GenericItem(std::string _name, std::string _desc, int _weight) {
                 this->_desc = _desc;
-                this->weight = weight;
+                this->weight = _weight;
                 this->_name = _name;
             }
 

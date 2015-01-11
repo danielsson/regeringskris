@@ -1,104 +1,106 @@
 {
-	"@type": "World",
-	"start": "@kontor",
+  "@type": "World",
+  "start": "@kontor",
+  "rooms": [
+    {
+      "@id": "@kontor",
+      "@type": "GenericRoom",
 
-	"rooms": [
-		{
-			"@id": "@kontor",
-			"@type": "GenericRoom",
+      "name": "Stadsministerns kontor",
+      "description": "Ett kontor mycket passande för en lägre mellanchef på ett halvstatligt pappersbruk.",
+      "items": [
+        {
+          "@id": "@presidential_barbie",
+          "@type": "GenericItem",
 
-			"name": "Stadsministerns kontor",
-			"description": "Blabla",
+          "name": "Barbie",
+          "description": "En liten leksaksdocka",
+          "weight": 2
+        },
+        {
+          "@id": "@penna",
+          "@type": "GenericItem",
 
-			"items": [
-				{
-					"@id": "@presidential_barbie",
-					"@type": "GenericItem",
+          "name": "Glitterpenna",
+          "description": "En transparent Lamy Safari med bred nibb, laddad med Stormy Grey-bläck."
+        }
+      ],
 
-					"name": "Barbie",
-					"description": "En liten leksak",
-					"weight": 2
-				},
+      "actors": [
+        {
+          "@id": "@annie_loof",
+          "@type": "GenericPolitician",
 
-				{
-					"@id": "@penna",
-					"@type": "GenericItem",
-					"name": "Penna"
-				}
+          "name": "Annie Lööf",
+          "allegiance": "C",
+          "desires": "@"
 
-			]
-		},
+        }
+      ]
+    },
+    {
+      "@id": "@korridor",
+      "@type": "GenericRoom",
 
-		{
-			"@id": "@korridor",
-			"@type": "GenericRoom",
+      "name": "Åsiktskorridoren",
+      "description": "En korridor som alla anser har fel storlek, även om man inte kommer överrens om vad som är den rätta storleken.",
+      "items": [
+        {
+          "@id": "@bok",
+          "@type": "GenericItem",
 
-			"name": "Åsiktskorridoren",
-			"description": "lalala",
+          "name": "Sveriges Rikes Lag",
+          "description": "En utmärkt brevpress.",
+          "weight": 10
+        },
+        {
+          "@id": "@sko",
+          "@type": "GenericItem",
 
-			"items": [
-				{
-					"@id": "@bok",
-					"@type": "GenericItem",
-
-					"name": "Sveriges Rikes Lag",
-					"description": "En utmärkt brevpress.",
-					"weight": 10
-				}
-			]
-		}
-	],
-
-  "actors": [
-	{
-	  "@id": "@annie_lööf",
-	  "@type": "Politician",
-
-	  "name": "Annie Lööf"
-	},
-
-	{
-	  "@id": "@asa_romson",
-	  "@type": "Politician",
-
-	  "name": "Åsa Romson"
-	},
-
-	{
-	  "@id": "@fredrik_reinfeldt",
-	  "@type": "Actor",
-
-	  "name": "Fredrik Reinfeldt"
-	},
-
-	{
-	  "@id": "@kinberg_batra",
-	  "@type": "Politician",
-
-	  "name": "Anna Kinberg Batra"
-	},
-
-	{
-	  "@id": "@magdalena_andersson",
-	  "@type": "Politician",
-
-	  "name": "Magdalena Andersson"
-	},
-
-	{
-	  "@id": "@goran_persson",
-	  "@type": "Actor",
-
-	  "name": "Göran Persson"
-	}
+          "name": "En Sko",
+          "description": "En röd klacksko med initialerna AL inskrivna på hälen."
+        }
+      ]
+    }
   ],
-
-	"neighbors": {
-		"@kontor": {
-			"S": "@korridor"
-		},
-		"@korridor": {
-			"N": "@kontor"
-		}
-	}
+  "actors": [
+    {
+      "@id": "@annie_lööf",
+      "@type": "Politician",
+      "name": "Annie Lööf"
+    },
+    {
+      "@id": "@asa_romson",
+      "@type": "Politician",
+      "name": "Åsa Romson"
+    },
+    {
+      "@id": "@fredrik_reinfeldt",
+      "@type": "Actor",
+      "name": "Fredrik Reinfeldt"
+    },
+    {
+      "@id": "@kinberg_batra",
+      "@type": "Politician",
+      "name": "Anna Kinberg Batra"
+    },
+    {
+      "@id": "@magdalena_andersson",
+      "@type": "Politician",
+      "name": "Magdalena Andersson"
+    },
+    {
+      "@id": "@goran_persson",
+      "@type": "Actor",
+      "name": "Göran Persson"
+    }
+  ],
+  "neighbors": {
+    "@kontor": {
+      "S": "@korridor"
+    },
+    "@korridor": {
+      "N": "@kontor"
+    }
+  }
 }

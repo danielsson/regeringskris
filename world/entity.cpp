@@ -85,7 +85,7 @@ void Politician::rant() {
         std::cout << "Alliansen måste gemensamt föra en diskussion i samförstånd för att nå en överenskommelse." << std::endl;
     }
     if(this->_name == "Magdalena Andersson") {
-        std::cout << "LADORNA ÄR TOMMA. Varför tror ingen på mig?" << std::endl;
+        std::cout << "LADORNA *ÄR* TOMMA. Varför tror ingen på mig?" << std::endl;
     }
 }
 
@@ -125,10 +125,10 @@ std::string Container::description() const {
     std::stringstream ss;
 
     ss << name() << "(" << _desc << ")" << std::endl;
-    ss << items.size() << " saker:" << std::endl;
+    ss << items.size() << " pryl(ar):" << std::endl;
 
     for (entities::Physible* p : items) {
-        ss << p->name() << " – " << p->description() << std::endl;
+        ss << p->name() << " – " << p->description() << " (" << weight << " kg)" << std::endl;
     }
 
     return ss.str();

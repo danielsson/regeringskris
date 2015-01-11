@@ -79,19 +79,13 @@ void read_environments(json &obj, std::map<std::string, Environment *> &environm
 void read_neighbors(json &obj, std::map<std::string, Environment *> &environments) {
 
     for(json::iterator it = obj.begin(); it != obj.end(); ++it) {
-
         Environment* from = environments[it.key()];
 
         for(json::iterator jt = it.value().begin(); jt != it.value().end(); ++jt) {
-
             Environment* to = environments[jt.value().get<std::string>()];
-
             Direction dir = Environment::fromString(jt.key());
-
             from->set_neighbor(dir, to);
-
         }
-
     }
 }
 
