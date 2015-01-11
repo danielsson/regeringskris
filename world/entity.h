@@ -7,7 +7,7 @@
 
 namespace kris {
     namespace entities {
-        class GenericItem;
+        class Physible;
 
         class Entity {
 
@@ -20,15 +20,15 @@ namespace kris {
         protected:
             std::string _name;
             std::string _description;
-            GenericItem _weakSpot = NULL;
+            Physible* _weakSpot;
 
         public:
-            Actor(std::string name, std::string desc, GenericItem weakS);
+            Actor(std::string name, std::string desc, Physible* weakS);
 
             Actor(std::string name);
             virtual std::string const & name();
             virtual bool act();
-            virtual bool offered(GenericItem &);
+            virtual bool offered(Physible &);
             virtual void rant();
         };
 
@@ -38,7 +38,7 @@ namespace kris {
             bool _givenConsent;
 
         public:
-            virtual bool offered(GenericItem &);
+            virtual bool offered(Physible &);
             Politician(std::string str) : Actor(str) {
                 _givenConsent = false;
             }
@@ -48,13 +48,13 @@ namespace kris {
         };
 
 
-        class Hero : Actor, kris::util::CommandHandler {
+        class Hero : Actor {
 
         public:
 
             Hero(std::string name) : Actor(name) {};
             virtual std::string type();
-            virtual bool handleCommand(std::string &);
+
         };
 
 

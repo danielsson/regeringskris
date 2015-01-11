@@ -4,10 +4,6 @@
 using namespace kris::entities;
 
 
-bool Hero::handleCommand(std::string &str) {
-    std::cout << str << std::endl;
-    return false;
-}
 
 std::string Hero::type() {
     return "hero";
@@ -24,7 +20,7 @@ Actor::Actor(std::string string) {
 }
 
 
-Actor::Actor(std::string name, std::string desc, GenericItem weakS) {
+Actor::Actor(std::string name, std::string desc, Physible* weakS) {
     this->_weakSpot = NULL;
     this->_name = name;
     this->_description = desc;
@@ -36,8 +32,8 @@ std::string const &Actor::name() {
     return _name;
 }
 
-bool Actor::offered(GenericItem &item) {
-    if(item.name() == _weakSpot.name()) {
+bool Actor::offered(Physible &item) {
+    if(item.name() == _weakSpot->name()) {
         std::cout << "Det är ju inte som att du behöver mitt stöd till någonting. Men tack! Jag har alltid velat ha en sån här!" << std::endl;
         return true;
     }
@@ -59,12 +55,12 @@ void Actor::rant() {
 
 
 
-bool Politician::offered(GenericItem &item) {
+bool Politician::offered(Physible &item) {
     if(_givenConsent) {
         std::cout << "Men jag har ju redan sagt ja? Har inte du viktigare saker att göra?" << std::endl;
         return true;
     }
-    if(item.name() == _weakSpot.name()) {
+    if(item.name() == _weakSpot->name()) {
         giveConsent();
         return true;
     }
