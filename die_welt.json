@@ -29,11 +29,12 @@
       "actors": [
         {
           "@id": "@annie_loof",
-          "@type": "GenericPolitician",
+          "@type": "Politician",
 
           "name": "Annie Lööf",
+          "description": "lalal",
           "allegiance": "C",
-          "desires": "@"
+          "desires": "@sko"
 
         }
       ]
@@ -57,7 +58,7 @@
           "@id": "@sko",
           "@type": "GenericItem",
 
-          "name": "En Sko",
+          "name": "Sko",
           "description": "En röd klacksko med initialerna AL inskrivna på hälen."
         }
       ]

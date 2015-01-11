@@ -44,6 +44,12 @@ std::string Environment::description() {
 
     ss << getItems().description() << std::endl;
 
+    ss << getActors().size() << " people" << std::endl;
+
+    for(auto it = getActors().begin(); it != getActors().end(); ++it) {
+        ss << it->second->describe();
+    }
+
     return ss.str();
 }
 

@@ -3,7 +3,18 @@
 
 using namespace kris::entities;
 
-
+std::map<std::string, Party> Entity::partyMapping{
+        {"VPK", VPK},
+        {"S", S},
+        {"MP", MP},
+        {"C", C},
+        {"KD", KD},
+        {"FP", FP},
+        {"M", M},
+        {"SD", SD},
+        {"FI", FI},
+        {"P", P}
+};
 
 std::string Hero::type() {
     return "hero";
@@ -20,7 +31,7 @@ Actor::Actor(std::string string) {
 }
 
 
-Actor::Actor(std::string name, std::string desc, Physible* weakS) {
+Actor::Actor(std::string name, std::string desc, Physible *weakS) {
     this->_weakSpot = NULL;
     this->_name = name;
     this->_description = desc;
@@ -33,7 +44,7 @@ std::string const &Actor::name() {
 }
 
 bool Actor::offered(Physible &item) {
-    if(item.name() == _weakSpot->name()) {
+    if (item.name() == _weakSpot->name()) {
         std::cout << "Det är ju inte som att du behöver mitt stöd till någonting. Men tack! Jag har alltid velat ha en sån här!" << std::endl;
         return true;
     }
@@ -43,24 +54,22 @@ bool Actor::offered(Physible &item) {
 }
 
 void Actor::rant() {
-    if(this->_name == "Göran Persson") {
+    if (this->_name == "Göran Persson") {
         std::cout << "Jodu.. Så här långt hade det aldrig gått på min tid. Det var bättre förr." << std::endl;
     }
 
-    if(this->_name == "Fredrik Reinfeldt") {
+    if (this->_name == "Fredrik Reinfeldt") {
         std::cout << "Hjälp så Anders hade skrattat om han var här!" << std::endl;
     }
 }
 
 
-
-
 bool Politician::offered(Physible &item) {
-    if(_givenConsent) {
+    if (_givenConsent) {
         std::cout << "Men jag har ju redan sagt ja? Har inte du viktigare saker att göra?" << std::endl;
         return true;
     }
-    if(item.name() == _weakSpot->name()) {
+    if (item.name() == _weakSpot->name()) {
         giveConsent();
         return true;
     }
@@ -75,16 +84,16 @@ void Politician::giveConsent() {
 }
 
 void Politician::rant() {
-    if(this->_name == "Annie Lööf") {
+    if (this->_name == "Annie Lööf") {
         std::cout << "Jag kommer aldrig, och då menar jag ALDRIG, stödja din regering!" << std::endl;
     }
-    if(this->_name == "Åsa Romson") {
+    if (this->_name == "Åsa Romson") {
         std::cout << "Hur ska man kunna förvänta sig att min man läser alla detaljer på en färgburk?" << std::endl;
     }
-    if(this->_name == "Anna Kinberg Batra") {
+    if (this->_name == "Anna Kinberg Batra") {
         std::cout << "Alliansen måste gemensamt föra en diskussion i samförstånd för att nå en överenskommelse." << std::endl;
     }
-    if(this->_name == "Magdalena Andersson") {
+    if (this->_name == "Magdalena Andersson") {
         std::cout << "LADORNA *ÄR* TOMMA. Varför tror ingen på mig?" << std::endl;
     }
 }
@@ -127,7 +136,7 @@ std::string Container::description() const {
     ss << name() << "(" << _desc << ")" << std::endl;
     ss << items.size() << " pryl(ar):" << std::endl;
 
-    for (entities::Physible* p : items) {
+    for (entities::Physible *p : items) {
         ss << p->name() << " – " << p->description() << " (" << weight << " kg)" << std::endl;
     }
 
@@ -145,4 +154,12 @@ bool Politician::consent() {
 
 std::string Entity::type() {
     return "Entity";
+}
+
+std::string Actor::describe() {
+    std::stringstream ss;
+
+    ss << name() << " - " << _description << std::endl;
+
+    return ss.str();
 }

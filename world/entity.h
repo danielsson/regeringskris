@@ -1,4 +1,5 @@
 #include <vector>
+#include <map>
 #include "../util.h"
 
 #ifndef ENTITY_GUARD
@@ -7,16 +8,26 @@
 
 namespace kris {
     namespace entities {
+
+        enum Party {
+            VPK, S, MP, C, KD, FP, M, SD, FI, P
+
+
+        };
+
+
+
         class Physible;
 
         class Entity {
 
         public:
             static std::string type();
+            static std::map<std::string, Party> partyMapping;
         };
 
 
-        class Actor : Entity {
+        class Actor : public Entity {
         protected:
             std::string _name;
             std::string _description;
@@ -30,21 +41,30 @@ namespace kris {
             virtual bool act();
             virtual bool offered(Physible &);
             virtual void rant();
+
+            virtual std::string describe();
         };
 
 
-        class Politician : Actor {
+        class Politician : public Actor {
         protected:
             bool _givenConsent;
+            Party affiliation;
 
         public:
             virtual bool offered(Physible &);
-            Politician(std::string str) : Actor(str) {
+            Politician(std::string str, std::string _desc, Party affiliation) : Actor(str) {
                 _givenConsent = false;
+                _description = _desc;
+                this->affiliation = affiliation;
             }
             virtual void giveConsent();
             virtual void rant();
             bool consent();
+
+            Party getAffiliation() {
+                return affiliation;
+            }
         };
 
 
@@ -56,8 +76,6 @@ namespace kris {
             static std::string type();
 
         };
-
-
 
 
 

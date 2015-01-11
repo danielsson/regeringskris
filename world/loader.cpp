@@ -44,6 +44,22 @@ void read_item(json &obj, Environment* env) {
     }
 }
 
+void read_actor(json & obj, Environment * environment) {
+
+    std::string id = obj["@id"];
+    std::string name = obj["name"];
+    std::string description = getDefault(obj, "description", "");
+
+    if (obj["@type"] == "Politician") {
+        std::string str = obj["allegiance"];
+        Party p = Politician::partyMapping[str];
+        Politician* pol = new Politician(name, description, p);
+        environment->getActors()[name] = pol;
+    } else {
+        std::cerr << "Unknown actor @type " << obj["@type"] << std::endl;
+    }
+
+}
 
 void read_environment(json &obj, std::map<std::string, Environment *> &environments) {
     std::string id = obj["@id"];
@@ -60,6 +76,12 @@ void read_environment(json &obj, std::map<std::string, Environment *> &environme
     if (obj.find("items") != obj.end()) {
         for (json item : obj["items"]) {
             read_item(item, retval);
+        }
+    }
+
+    if (obj.find("actors") != obj.end()) {
+        for (json actor : obj["actors"]) {
+            read_actor(actor, retval);
         }
     }
 

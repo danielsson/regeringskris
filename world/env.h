@@ -1,6 +1,7 @@
 #include <vector>
 #include "../util.h"
 #include "entity.h"
+#include <map>
 
 #ifndef ENV_GUARD
 #define ENV_GUARD
@@ -19,6 +20,8 @@ namespace kris {
 
         protected:
             entities::Container items;
+            std::map<std::string, entities::Actor*> actors;
+
 
             Environment* n_N = 0;
             Environment* n_E = 0;
@@ -52,6 +55,10 @@ namespace kris {
 
             entities::Container& getItems() {
                 return items;
+            }
+
+            std::map<std::string, entities::Actor*> & getActors() {
+                return actors;
             }
 
             static Direction fromString(std::string);
