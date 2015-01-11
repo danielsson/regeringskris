@@ -21,7 +21,6 @@ namespace kris {
             std::string _name;
             std::string _description;
             GenericItem _weakSpot = NULL;
-            bool _givenConsent;
 
         public:
             Actor(std::string name, std::string desc, GenericItem weakS);
@@ -30,15 +29,22 @@ namespace kris {
             virtual std::string const & name();
             virtual bool act();
             virtual bool offered(GenericItem &);
-            virtual void giveConsent();
             virtual void rant();
         };
 
 
         class Politician : Actor {
+        protected:
+            bool _givenConsent;
 
         public:
-            Politician(std::string str) : Actor(str) {}
+            virtual bool offered(GenericItem &);
+            Politician(std::string str) : Actor(str) {
+                _givenConsent = false;
+            }
+            virtual void giveConsent();
+            virtual void rant();
+            bool consent();
         };
 
 
