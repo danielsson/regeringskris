@@ -46,3 +46,40 @@ std::string Environment::description() {
 
     return ss.str();
 }
+
+std::string Environment::type() {
+    return "Environment";
+}
+
+
+Direction Environment::fromString(std::string str) {
+    Direction direction;
+
+    if (str == "n") {
+        direction = Direction::N;
+    } else if (str == "e") {
+        direction = Direction::E;
+    } else if (str == "s") {
+        direction = Direction::S;
+    } else {
+        direction = Direction::W;
+    }
+
+    return direction;
+}
+
+void Environment::set_neighbor(Direction d, Environment *environment) {
+    switch (d) {
+        case N:
+            n_N = environment;
+            break;
+        case S:
+            n_S = environment;
+            break;
+        case W:
+            n_W = environment;
+            break;
+        case E:
+            n_E = environment;
+    }
+}

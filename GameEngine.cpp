@@ -114,18 +114,18 @@ void kris::GameEngine::init_router() {
 
 kris::GameEngine::GameEngine() : loader("die_welt.json") {
 
-    loader.construct();
+    environment = loader.construct();
 
     init_router();
 
     hero = new entities::Hero("Löfven");
 
-    entities::GenericItem* doll = new entities::GenericItem("Barbie", "A small doll");
-    entities::GenericItem* apple = new entities::GenericItem("Apple", "An edible fruit");
+    //entities::GenericItem* doll = new entities::GenericItem("Barbie", "A small doll");
+    //entities::GenericItem* apple = new entities::GenericItem("Apple", "An edible fruit");
 
-    environment = new env::GenericRoom("Stadsminsterns kontor", "Ett kontor mycket passande för en lägre mellanchef på ett halvstatligt pappersbruk.");
-    environment->getItems().add_item(doll);
-    environment->getItems().add_item(apple);
+    //environment = new env::GenericRoom("Stadsminsterns kontor", "Ett kontor mycket passande för en lägre mellanchef på ett halvstatligt pappersbruk.");
+    //environment->getItems().add_item(doll);
+    //environment->getItems().add_item(apple);
 }
 
 std::vector<std::string> kris::GameEngine::tokenize(std::string const &sentence) {

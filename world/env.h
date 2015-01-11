@@ -9,9 +9,14 @@ namespace kris {
     namespace env {
         enum Direction {
             N, E, S, W
+
+
         };
 
+
+
         class Environment {
+
         protected:
             entities::Container items;
 
@@ -28,8 +33,11 @@ namespace kris {
 
             virtual std::string directions();
             virtual Environment*  neighbor(Direction& direction);
+            virtual void set_neighbor(Direction d, Environment *);
             virtual std::string description();
             virtual std::string name() = 0;
+
+            static std::string type();
 
             virtual void onEntry(entities::Actor);
 
@@ -45,6 +53,8 @@ namespace kris {
             entities::Container& getItems() {
                 return items;
             }
+
+            static Direction fromString(std::string);
         };
 
         class OutdoorEnv : public Environment {
@@ -78,6 +88,10 @@ namespace kris {
 
             virtual std::string name() {
                 return _name;
+            }
+
+            static std::string type() {
+                return "GenericRoom";
             }
 
         };
