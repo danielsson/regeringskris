@@ -1,7 +1,7 @@
 {
   "@type": "World",
   "start": "@kontor",
-  "rooms": [
+  "env": [
     {
       "@id": "@kontor",
       "@type": "GenericRoom",
@@ -23,6 +23,22 @@
 
           "name": "Glitterpenna",
           "description": "En transparent Lamy Safari med bred nibb, laddad med Stormy Grey-bläck."
+        },
+        {
+          "@id": "@toblerone",
+          "@type": "GenericItem",
+
+          "name": "Toblerone",
+          "description": "En god chokladkaka, som behållits som minnessak.",
+          "weight": 1,
+          "moveable": false
+        },
+        {
+          "@id": "@creditcard",
+          "@type": "GenericItem",
+
+          "name": "Kreditkort",
+          "description": "Regeringens kreditkort. Får endast användas för rikets bästa."
         }
       ],
 
@@ -32,7 +48,7 @@
           "@type": "Politician",
 
           "name": "Annie Lööf",
-          "description": "”Det enda politiska system som rimmar med denna moral är laissez-faire-kapitalismen - en helt oreglerad, okontrollerad kapitalism.”",
+          "description": "”I somras läste jag Ayn Rands Atlas Shrugged och blev helt betagen. Boken är den absolut i särklass bästa bok jag har läst. Den ryckte med mig, den berörde och den fick tanken att växa.”",
           "allegiance": "C",
           "desires": "@sko"
 

@@ -40,10 +40,13 @@ namespace kris {
         void cmd_describe(std::vector<std::string> const &);
         void cmd_go(std::vector<std::string> const &);
         void cmd_give(std::vector<std::string> const &);
+        void cmd_take(std::vector<std::string> const &);
         void cmd_steal(std::vector<std::string> const &);
         void cmd_use(std::vector<std::string> const &);
 
         void cmd_help(std::vector<std::string> const &);
+        void cmd_inventory(std::vector<std::string> const &);
+
 
 
     };

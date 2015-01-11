@@ -3,7 +3,7 @@
 
 using namespace kris::entities;
 
-std::map<std::string, Party> Entity::partyMapping{
+std::map<std::string, Party> Politician::partyMapping{
         {"VPK", VPK},
         {"S", S},
         {"MP", MP},
@@ -16,7 +16,7 @@ std::map<std::string, Party> Entity::partyMapping{
         {"P", P}
 };
 
-std::map<Party, std::string> Entity::partyMappingReversed{
+std::map<Party, std::string> Politician::partyMappingReversed{
         {VPK,"VPK"},
         {S, "S"},
         {MP, "MP"},
@@ -57,8 +57,8 @@ std::string const &Actor::name() {
     return _name;
 }
 
-bool Actor::offered(Physible &item) {
-    if (item.name() == _weakSpot->name()) {
+bool Actor::offered(Physible *item) {
+    if (item->name() == _weakSpot->name()) {
         std::cout << "Det är ju inte som att du behöver mitt stöd till någonting. Men tack! Jag har alltid velat ha en sån här!" << std::endl;
         return true;
     }
@@ -184,4 +184,20 @@ std::string Politician::describe() {
     ss << name() << "(" << partyMappingReversed[affiliation] << ") - " << _description << std::endl;
 
     return ss.str();
+}
+
+Container::TransferError Container::transfer_to(const std::string &name, Container &other) {
+
+    Physible* p = get_item(name);
+    if (!p) {
+        return NotFound;
+    }
+
+    if (!p->isMoveable())
+        return Immovable;
+
+    items.erase(std::remove(items.begin(), items.end(), p), items.end());
+    other.add_item(p);
+
+    return OK;
 }

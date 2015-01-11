@@ -15,23 +15,96 @@ namespace kris {
 
 
 
-        class Physible;
-
         class Entity {
 
         public:
             static std::string type();
-            static std::map<std::string, Party> partyMapping;
-
-            static std::map<Party, std::string> partyMappingReversed;
         };
 
+
+
+        /*
+            ITEMS
+         */
+
+
+        class Physible : public Entity {
+
+        protected:
+            std::string _name;
+            std::string _desc;
+            int weight = 1;
+            bool moveable = true;
+
+        public:
+            virtual std::string const &name() const;
+            virtual std::string description() const;
+            virtual int getWeight() const;
+            virtual bool use();
+
+            bool isMoveable() const {
+                return moveable;
+            }
+
+            void setMoveable(bool moveable) {
+                Physible::moveable = moveable;
+            }
+        };
+
+
+
+        class Container : public Physible {
+
+
+        protected:
+            std::vector<entities::Physible*> items;
+
+        public:
+            enum TransferError {
+            Full, NotFound, Immovable, OK
+            };
+
+            void add_item(entities::Physible* item) {
+                items.push_back(item);
+            }
+
+            entities::Physible* get_item(const std::string& name);
+            virtual std::string type();
+
+            virtual std::string description() const;
+            virtual TransferError transfer_to(const std::string& name, Container & other);
+
+        };
+
+
+
+
+        class GenericItem : public Physible {
+        public:
+
+            GenericItem(std::string _name, std::string _desc, int _weight) {
+                this->_desc = _desc;
+                this->weight = _weight;
+                this->_name = _name;
+            }
+
+            static std::string type();
+
+        };
+
+        class Purse : Container {
+
+        };
 
         class Actor : public Entity {
         protected:
             std::string _name;
             std::string _description;
+            std::string image_name;
+
             Physible* _weakSpot;
+
+            entities::Container items;
 
         public:
             Actor(std::string name, std::string desc, Physible* weakS);
@@ -39,10 +112,23 @@ namespace kris {
             Actor(std::string name);
             virtual std::string const & name();
             virtual bool act();
-            virtual bool offered(Physible &);
+            virtual bool offered(Physible *);
             virtual void rant();
 
             virtual std::string describe();
+
+
+            std::string const &getImageName() const {
+                return image_name;
+            }
+
+            void setImageName(std::string &image_name) {
+                Actor::image_name = image_name;
+            }
+
+            entities::Container &getItems() {
+                return items;
+            }
         };
 
 
@@ -52,6 +138,10 @@ namespace kris {
             Party affiliation;
 
         public:
+            static std::map<std::string, Party> partyMapping;
+
+            static std::map<Party, std::string> partyMappingReversed;
+
             virtual bool offered(Physible &);
             Politician(std::string str, std::string _desc, Party affiliation) : Actor(str) {
                 _givenConsent = false;
@@ -69,67 +159,12 @@ namespace kris {
         };
 
 
-        class Hero : Actor {
+        class Hero : public Actor {
 
         public:
 
             Hero(std::string name) : Actor(name) {};
             static std::string type();
-
-        };
-
-
-
-        /*
-            ITEMS
-         */
-
-
-        class Physible : protected Entity {
-
-        protected:
-            std::string _name;
-            std::string _desc;
-            int weight = 1;
-
-        public:
-            virtual std::string const &name() const;
-            virtual std::string description() const;
-            virtual int getWeight() const;
-            virtual bool use();
-        };
-
-        class Container : Physible {
-
-        protected:
-            std::vector<entities::Physible*> items;
-
-        public:
-            void add_item(entities::Physible* item) {
-                items.push_back(item);
-            }
-
-            entities::Physible* get_item(const std::string& name);
-            virtual std::string type();
-
-            virtual std::string description() const;
-
-        };
-
-        class GenericItem : public Physible {
-        public:
-
-            GenericItem(std::string _name, std::string _desc, int _weight) {
-                this->_desc = _desc;
-                this->weight = _weight;
-                this->_name = _name;
-            }
-
-            static std::string type();
-
-        };
-
-        class Purse : Container {
 
         };
 

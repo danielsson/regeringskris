@@ -38,7 +38,13 @@ void read_item(json &obj, Environment* env) {
     int weight = getDefault(obj, "weight", 1);
 
     if (obj["@type"] == GenericItem::type()) {
-        env->getItems().add_item(new GenericItem(name, description, weight));
+        GenericItem *item = new GenericItem(name, description, weight);
+
+        if (obj.find("moveable") != obj.end()) {
+            item->setMoveable(obj["moveable"]);
+        }
+
+        env->getItems().add_item(item);
     } else {
         std::cerr << "Unknown item @type " << obj["@type"] << std::endl;
     }
@@ -54,7 +60,14 @@ void read_actor(json & obj, Environment * environment) {
         std::string str = obj["allegiance"];
         Party p = Politician::partyMapping[str];
         Politician* pol = new Politician(name, description, p);
+
+        if (obj.find("image") != obj.end()) {
+            std::string img = obj["image"];
+            pol->setImageName(img);
+        }
+
         environment->getActors()[name] = pol;
+
     } else {
         std::cerr << "Unknown actor @type " << obj["@type"] << std::endl;
     }
@@ -124,7 +137,7 @@ Environment *Loader::construct() {
 
     const std::string start_location = obj["start"];
 
-    read_environments(obj["rooms"], environments);
+    read_environments(obj["env"], environments);
 
     read_neighbors(obj["neighbors"], environments);
 
