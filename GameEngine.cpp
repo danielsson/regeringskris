@@ -21,7 +21,7 @@ void kris::GameEngine::run() {
         if(router.find(command) != router.end()) {
             (this->*router[command])(tokens);
         } else {
-            std::cout << "Ingen visste vad du menade, men någon fann det kränkande och anmälde det till KU";
+            std::cout << "Ingen visste vad du menade, men någon fann det kränkande och anmälde det till KU" << std::endl;
         }
     }
 }
@@ -112,7 +112,9 @@ void kris::GameEngine::init_router() {
     router["go"] = &GameEngine::cmd_go;
 }
 
-kris::GameEngine::GameEngine() {
+kris::GameEngine::GameEngine() : loader("die_welt.json") {
+
+    loader.construct();
 
     init_router();
 

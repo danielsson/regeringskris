@@ -1,5 +1,6 @@
 #import "world/entity.h"
 #import "world/env.h"
+#include "world/loader.h"
 #import <iostream>
 #include <map>
 
@@ -18,6 +19,9 @@ namespace kris {
     private:
 
         bool isRunning = true;
+
+        Loader loader;
+
         env::Environment* environment;
         entities::Hero* hero;
 
@@ -32,7 +36,6 @@ namespace kris {
         GameEngine();
         void run();
         void requestEnd(std::vector<std::string> const &);
-
 
         void cmd_describe(std::vector<std::string> const &);
         void cmd_go(std::vector<std::string> const &);

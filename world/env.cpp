@@ -4,10 +4,6 @@
 
 using namespace kris::env;
 
-bool Environment::handleCommand(std::string & string) {
-    return false;
-}
-
 Environment*  Environment::neighbor(Direction& direction) {
     switch (direction) {
         case N:
