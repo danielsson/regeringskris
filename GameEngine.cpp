@@ -109,7 +109,7 @@ void kris::GameEngine::init_router() {
     router["beskriv"] = &GameEngine::cmd_describe;
     router["sluta"] = &GameEngine::requestEnd;
     router["hjälp"] = &GameEngine::cmd_help;
-    router["gå"] = &GameEngine::cmd_go;
+    router["gå"] = &GameEngine::cmd_go;2
 }
 
 kris::GameEngine::GameEngine() {
