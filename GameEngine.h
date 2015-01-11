@@ -38,6 +38,8 @@ namespace kris {
         void cmd_steal(std::string const &);
         void cmd_use(std::string const &);
 
+        void cmd_help(std::string const &);
+
 
     };
 
