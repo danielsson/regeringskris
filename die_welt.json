@@ -1,0 +1,65 @@
+{
+	"@type": "World",
+	"start": "@kontor",
+
+	"rooms": [
+		{
+			"@id": "@kontor",
+			"@type": "GenericRoom",
+
+			"name": "Stadsministerns kontor",
+			"description": "Blabla",
+
+			"items": [
+				{
+					"@id": "@presidential_barbie",
+					"@type": "GenericItem",
+
+					"name": "Barbie",
+					"description": "En liten leksak",
+					"weight": 2
+				},
+
+				{
+					"@id": "@penna",
+					"@type": "GenericItem",
+					"name": "Penna"
+				}
+
+			],
+
+			"actors": {
+				
+			}
+
+		},
+
+		{
+			"@id": "@korridor",
+			"@type": "GenericRoom",
+
+			"name": "Åsiktskorridoren",
+			"description": "lalala",
+
+			"items": [
+				{
+					"@id": "@bok",
+					"@type": "GenericItem",
+
+					"name": "Sveriges Rikes Lag",
+					"description": "En utmärkt brevpress.",
+					"weight": 10
+				}
+			]
+		}
+	],
+
+	"neighbors": {
+		"@kontor": {
+			"S": "@korridor"
+		},
+		"@korridor": {
+			"N": "@kontor"
+		}
+	}
+}

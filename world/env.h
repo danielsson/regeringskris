@@ -11,7 +11,7 @@ namespace kris {
             N, E, S, W
         };
 
-        class Environment : kris::util::CommandHandler {
+        class Environment {
         protected:
             entities::Container items;
 
@@ -25,8 +25,6 @@ namespace kris {
 
         public:
             Environment() {};
-
-            virtual bool handleCommand(std::string &);
 
             virtual std::string directions();
             virtual Environment*  neighbor(Direction& direction);
