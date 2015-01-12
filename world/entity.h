@@ -36,7 +36,6 @@ namespace kris {
         protected:
             std::string id;
         public:
-            static std::string type();
 
             std::string const &getId() const {
                 return id;
@@ -117,7 +116,6 @@ namespace kris {
                 this->_name = _name;
             }
 
-            static std::string type();
 
         };
 
@@ -167,6 +165,10 @@ namespace kris {
 
             virtual void kabbla(Hero * hero);
 
+            virtual std::string type() {
+                return "actor";
+            }
+
             std::string const &getImageName() const {
                 return image_name;
             }
@@ -210,6 +212,10 @@ namespace kris {
                 return affiliation;
             }
 
+            virtual std::string type() {
+                return "politician";
+            }
+
             /**
             * How resistant are this politician against your politics?
             */
@@ -246,7 +252,6 @@ namespace kris {
         public:
 
             Hero(std::string name) : Actor(name) {};
-            static std::string type();
 
         };
 

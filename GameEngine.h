@@ -49,6 +49,8 @@ namespace kris {
 
         void cmd_kabbla(std::vector<std::string> const &);
 
+        void cmd_tally(std::vector<std::string> const &);
+
 
 
     };

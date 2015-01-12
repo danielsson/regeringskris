@@ -184,6 +184,45 @@ void GameEngine::cmd_kabbla(std::vector<std::string> const &cmd) {
 }
 
 
+void GameEngine::cmd_tally(std::vector<std::string> const &vector) {
+
+    std::cout << "========================================================================\n";
+    std::cout << "Omröstning om budgeten har inletts!\n";
+    std::cout << "========================================================================\n";
+
+
+    int count_for = 0;
+    int count_against = 0;
+    for (Actor * a : loader.getActors()) {
+        if(a->type() == "politician") {
+            Politician * p = (Politician *) a;
+
+            std::cout << p->name() << "\t är ";
+            if (p->consent()) {
+                std::cout << "för budgeten.\n";
+                count_for++;
+            } else {
+                std::cout << "emot budgeten.\n";
+                count_against++;
+            }
+
+        }
+    }
+
+    std::cout << "========================================================================\n";
+    std::cout << "Resultat: ";
+
+    if(count_for > count_against)
+        std::cout << "JA";
+    else
+        std::cout << "NEJ";
+
+    float a = count_for;
+    std::cout << "\t (" << (a / (count_for + count_against)) << "% voted yes)\n";
+    std::cout << "========================================================================\n";
+}
+
+
 
 void GameEngine::init_router() {
     router["beskriv"] = &GameEngine::cmd_describe;
@@ -195,6 +234,7 @@ void GameEngine::init_router() {
     router["ge"] = &GameEngine::cmd_give;
     router["ta"] = &GameEngine::cmd_take;
     router["käbbla"] = &GameEngine::cmd_kabbla;
+    router["rösta"] = &GameEngine::cmd_tally;
 }
 
 GameEngine::GameEngine() : loader("die_welt.json") {
@@ -217,4 +257,3 @@ std::vector<std::string> GameEngine::tokenize(std::string const &sentence) {
     return tokens;
 
 }
-

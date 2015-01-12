@@ -39,7 +39,7 @@ void Loader::read_item(json &obj, Environment* env) {
     std::string description = getDefault(obj, "description", "");
     int weight = getDefault(obj, "weight", 1);
 
-    if (obj["@type"] == GenericItem::type()) {
+    if (obj["@type"] == "GenericType") {
         GenericItem *item = new GenericItem(name, description, weight);
         add_managed_pointer(item);
         item->setId(id);

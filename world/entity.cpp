@@ -34,11 +34,6 @@ std::map<Party, std::string> Politician::partyMappingReversed{
 };
 
 
-std::string Hero::type() {
-    return "hero";
-}
-
-
 bool Actor::act() {
     this->rant();
     return false;
@@ -127,10 +122,6 @@ std::string Physible::description() const {
     return _desc;
 }
 
-std::string GenericItem::type() {
-    return "GenericItem";
-}
-
 Physible *Container::get_item(const std::string &name) {
     for (Physible *p : items) {
         if(iequals(p->name(), name)) {
@@ -186,10 +177,6 @@ bool Politician::consent() {
     return _givenConsent;
 }
 
-std::string Entity::type() {
-    return "Entity";
-}
-
 std::string Actor::describe() {
     std::stringstream ss;
 
@@ -236,10 +223,6 @@ bool Oracle::act() {
     std::cout << "Det är farligt att gå ensam, ta denna:\n";
 
     Physible * p = new HolyArtifact("Internationalen", "I orginalversion, men Göran Greiders autograf på omslaget.");
-
-
-
-
     return true;
 }
 
