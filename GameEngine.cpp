@@ -6,11 +6,13 @@
 #include <algorithm>
 
 using namespace kris;
+using namespace kris::util;
 
 void GameEngine::run() {
     std::string cmd;
 
-    print_welcome();
+    //print_welcome();
+    Util::print_file("intro.txt");
 
     std::srand((unsigned int) std::time(0));
 
@@ -28,20 +30,6 @@ void GameEngine::run() {
         } else {
             std::cout << "Ingen visste vad du menade, men någon fann det kränkande och anmälde det till KU" << std::endl;
         }
-    }
-}
-
-void GameEngine::print_welcome() {
-    std::string line;
-    std::ifstream w_file("intro.txt");
-    if (w_file.is_open()) {
-        while (getline(w_file, line)) {
-            std::cout << line << std::endl;
-        }
-
-        w_file.close();
-    } else {
-        std::cout << "File not found: intro.txt" << std::endl;
     }
 }
 
@@ -186,6 +174,14 @@ void GameEngine::cmd_kabbla(std::vector<std::string> const &cmd) {
 
 void GameEngine::cmd_tally(std::vector<std::string> const &vector) {
 
+    if (environment->name() != "Plenisalen") {
+        std::cout << "========================================================================\n";
+        std::cout << "EXTRA: Statsminister Löfven försöker starta riksdagsomröstning ifrån\n";
+        std::cout << environment->name() << ". Mer om detta i Aftonbladet +Minus!\n";
+        std::cout << "========================================================================\n";
+        return;
+    }
+
     std::cout << "========================================================================\n";
     std::cout << "Omröstning om budgeten har inletts!\n";
     std::cout << "========================================================================\n";
@@ -218,8 +214,16 @@ void GameEngine::cmd_tally(std::vector<std::string> const &vector) {
         std::cout << "NEJ";
 
     float a = count_for;
-    std::cout << "\t (" << (a / (count_for + count_against)) << "% voted yes)\n";
+    std::cout << "\t (" << (a / (count_for + count_against) * 100) << "% röstade ja)\n";
     std::cout << "========================================================================\n";
+
+    if (count_for > count_against) {
+        Util::print_file("overrenskommelsen.txt");
+
+        isRunning = false;
+    } else {
+        std::cout << "Du är ett misslyckande\n";
+    }
 }
 
 
@@ -243,7 +247,6 @@ GameEngine::GameEngine() : loader("die_welt.json") {
     environment = loader.construct();
 
     init_router();
-
 }
 
 std::vector<std::string> GameEngine::tokenize(std::string const &sentence) {

@@ -3,9 +3,18 @@
 
 
 using namespace kris::util;
+void Util::print_file(std::string path) {
+    std::string line;
+    std::ifstream w_file(path);
+    if (w_file.is_open()) {
+        while (getline(w_file, line)) {
+            std::cout << line << std::endl;
+        }
 
-std::string CommandHandler::readWord(std::string & str) {
-    return "";
+        w_file.close();
+    } else {
+        std::cout << "File not found: " << path << std::endl;
+    }
 }
 
 #pragma clang diagnostic push

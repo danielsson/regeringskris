@@ -11,7 +11,7 @@ using namespace kris::util;
 using namespace kris::kabbala;
 
 std::pair<std::string, int> KabblaMinigame::getNewspaper() {
-    switch (rand() % 8) {
+    switch (rand() % 9) {
         case 0: return std::pair<std::string, int>("Aftonbladet", 10);
         case 1: return std::pair<std::string, int>("Expressen", 3);
         case 2: return std::pair<std::string, int>("Dagens Nyheter", 1);
@@ -21,12 +21,14 @@ std::pair<std::string, int> KabblaMinigame::getNewspaper() {
         case 5: return std::pair<std::string, int>("Fira Tider", -10);
         case 6: return std::pair<std::string, int>("en våtservett", 0);
         case 7: return std::pair<std::string, int>("whiteboarden i 1537", 0);
+        case 8: return std::pair<std::string, int>("New York Times", 100);
+
 
     }
 }
 
 std::string KabblaMinigame::getComparison() {
-    switch (rand() % 21) {
+    switch (rand() % 20) {
         case 0: return "toffel";
         case 1: return "saltgurka";
         case 2: return "hal ål";
@@ -47,8 +49,7 @@ std::string KabblaMinigame::getComparison() {
         case 16: return "oomkullvältelig";
         case 17: return "fritös";
         case 18: return "bänkens prydnad";
-        case 19: return "missfoster";
-        case 20: return "tarvligt kräk";
+        case 19: return "tarvligt kräk";
             //case 0: return std::pair<std::string, int>("Aftonbladet", 10);
 
     }

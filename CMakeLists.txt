@@ -12,9 +12,11 @@ set(SOURCE_FILES
     fight/kabbla.cpp
     util.cpp
     json/json.cc)
+
 add_executable(regeringskris ${SOURCE_FILES})
 
 file(COPY people DESTINATION ${CMAKE_BINARY_DIR} )
 
 configure_file(intro.txt intro.txt COPYONLY)
 configure_file(die_welt.json die_welt.json COPYONLY)
+configure_file(overrenskommelsen.txt overrenskommelsen.txt COPYONLY)
