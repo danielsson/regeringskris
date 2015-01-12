@@ -1,8 +1,10 @@
 #include <sstream>
 #include "entity.h"
+#include "../fight/kabbla.h"
 
 using namespace kris::entities;
 using namespace kris::util;
+
 
 std::map<std::string, Party> Politician::partyMapping{
         {"VPK", VPK},
@@ -205,19 +207,11 @@ Container::TransferError Container::transfer_to(const std::string &name, Contain
     return OK;
 }
 
-void Actor::kabbla(Actor *hero) {
+void Actor::kabbla(Hero *hero) {
     std::cout << "Jag vill inte bråka!\n";
 }
 
-void Politician::kabbla(Actor *hero) {
-    std::cout << "Bring it on!\n";
-
-    if (image_name.size() > 0) {
-
-        std::string image = Util::get_file_contents("people/" + image_name);
-        std::cout << image << std::endl;
-    }
-
-
-
+void Politician::kabbla(Hero *hero) {
+    kabbala::KabblaMinigame kabblaMinigame(nullptr, this, hero);
+    kabblaMinigame.kabbla();
 }

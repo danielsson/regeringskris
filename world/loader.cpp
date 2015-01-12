@@ -68,6 +68,11 @@ void read_actor(json & obj, Environment * environment) {
             pol->setImageName(img);
         }
 
+        if (obj.find("resistance") != obj.end()) {
+            int pt = obj["resistance"];
+            pol->setResistancePoints(pt);
+        }
+
         environment->getActors()[name] = pol;
 
     } else {

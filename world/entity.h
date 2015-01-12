@@ -97,6 +97,10 @@ namespace kris {
 
         };
 
+
+        class Hero;
+
+
         class Actor : public Entity {
         protected:
             std::string _name;
@@ -118,7 +122,7 @@ namespace kris {
 
             virtual std::string describe();
 
-            virtual void kabbla(Actor * hero);
+            virtual void kabbla(Hero * hero);
 
             std::string const &getImageName() const {
                 return image_name;
@@ -138,6 +142,7 @@ namespace kris {
         protected:
             bool _givenConsent;
             Party affiliation;
+            int resistancePoints = 0;
 
         public:
             static std::map<std::string, Party> partyMapping;
@@ -154,10 +159,22 @@ namespace kris {
             virtual void rant();
             bool consent();
             virtual std::string describe();
-            virtual void kabbla(Actor * hero);
+            virtual void kabbla(Hero * hero);
 
             Party getAffiliation() {
                 return affiliation;
+            }
+
+
+            /**
+            * How resistant are this politician against your politics?käbb
+            */
+            int getResistancePoints() const {
+                return resistancePoints;
+            }
+
+            void setResistancePoints(int resistancePoints) {
+                Politician::resistancePoints = resistancePoints;
             }
         };
 
