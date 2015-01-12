@@ -105,14 +105,16 @@ void Politician::rant() {
     if (this->_name == "Annie") {
         std::cout << "Jag kommer aldrig, och då menar jag ALDRIG, stödja din regering!" << std::endl;
     }
-    if (this->_name == "Åsa Romson") {
+    else if (this->_name == "Åsa Romson") {
         std::cout << "Hur ska man kunna förvänta sig att min man läser alla detaljer på en färgburk?" << std::endl;
     }
-    if (this->_name == "Anna Kinberg Batra") {
+    else if (this->_name == "Anna Kinberg Batra") {
         std::cout << "Alliansen måste gemensamt föra en diskussion i samförstånd för att nå en överenskommelse." << std::endl;
     }
-    if (this->_name == "Magdalena Andersson") {
+    else if (this->_name == "Magdalena Andersson") {
         std::cout << "LADORNA *ÄR* TOMMA. Varför tror ingen på mig?" << std::endl;
+    } else {
+        std::cout << "Vem är det som är kapten på den här skutan egentligen?" << std::endl;
     }
 }
 
@@ -129,9 +131,8 @@ std::string GenericItem::type() {
 }
 
 Physible *Container::get_item(const std::string &name) {
-
     for (Physible *p : items) {
-        if (p->name() == name) {
+        if(iequals(p->name(), name)) {
             return p;
         }
     }
@@ -139,6 +140,18 @@ Physible *Container::get_item(const std::string &name) {
     return 0;
 
 }
+
+bool Physible::iequals(const std::string& a, const std::string& b)
+{
+    unsigned int sz = a.size();
+    if (b.size() != sz)
+        return false;
+    for (unsigned int i = 0; i < sz; ++i)
+        if (tolower(a[i]) != tolower(b[i]))
+            return false;
+    return true;
+}
+
 
 int Physible::getWeight() const {
     return weight;

@@ -66,6 +66,7 @@ namespace kris {
             virtual std::string description() const;
             virtual int getWeight() const;
             virtual bool use();
+            bool iequals(const std::string&, const std::string&);
 
             bool isMoveable() const {
                 return moveable;

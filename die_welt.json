@@ -115,7 +115,99 @@
           "description": "En röd klacksko med initialerna AL inskrivna på hälen."
         }
       ]
+    },
+    {
+      "@id": "@plenisalen",
+      "@type": "GenericRoom",
+
+      "name": "Plenisalen",
+      "description": "En sal där man fattar beslut om allt från budget till danstillstånd.",
+      "items": [
+        {
+          "@id": "@klubba",
+          "@type": "GenericItem",
+
+          "name": "Jätteklubba",
+          "decription": "Talmannens jätteklubba som verkar ha blivit kvarglömd på ett bord.",
+        },
+        {
+          "@id": "@PSP",
+          "@type": "GenericItem",
+
+          "name": "PSP-1000",
+          "description": "Ett PlayStation Portable modell 1000. Under batteriluckan glömmer sig en lapp med namnet Göran Persson skrivet i rött bläck."
+        }
+      ]
+    },
+    {
+      "@id": "@torget",
+      "@type": "GenericRoom",
+
+      "name": "Torget",
+      "description": "Ett torg där stans bästa dadlar finns att köpa. Eller nej förresten, det var visst i Skärholmen. Det här är bara ett helt vanligt torg.",
+      "items": [
+        {
+          "@id": "kartong",
+          "@type": "GenericItem",
+
+          "name": "Kartonglåda",
+          "description": "En kartonglåda som även fungerar som provisorisk talarstol."
+        }
+      ]
+    },
+    {
+      "@id": "@sturep",
+      "@type": "GenericRoom",
+
+      "name": "Sture P",
+      "description": "Stockholms enda plats som är impregnerat i hårvax. Det finns inget halare ställe i stan!",
+      "items": [
+        {
+          "@id": "@väska",
+          "@type": "GenericItem",
+
+          "name": "Väska",
+          "description": "En förra-säsongens Michael Kors väska i rosa och guld"
+        }
+      ]
+    },
+    {
+      "@id": "@norrmalarstrand",
+      "@type": "GenericRoom",
+
+      "name": "Norrmälarstrand",
+      "description": "Ett mysigt ställe som hör till Kungsholmen. Nära och bra till Stadshuset, det finns även en del båtar i närheten."
+    },
+    {
+      "@id": "@husbat",
+      "@type": "GenericRoom",
+
+      "name": "Åsa Romsons husbåt",
+      "description": "En husbåt som aldrig har problem med algbeväxtning. Ägs av Åsa Romson och Jens Kiil",
+      "items": [
+        {
+          "@id": "@fargburk",
+          "@type": "GenericItem",
+          "name": "Färgburk",
+          "description": "En tom färgburk med alla möjliga sorters varningssymboler. Burken har ett klistermärke som visar att den är värdsbäst på att döda haj-bebisar."
+        },
+        {
+          "@id": "anka",
+          "@type": "GenericItem",
+
+          "name": "Gummianka",
+          "desciption": "En gummianka så väl använd att färgen som var ögonen har försvunnit."
+        }
+      ]
+    },
+    {
+      "@id": "@lohk",
+      "@type": "GenericRoom",
+
+      "name": "LO-HK",
+      "description": "LOs högkvarter. Här finns det både stora och små höns att prata med."
     }
+
   ],
   "actors": [
     {

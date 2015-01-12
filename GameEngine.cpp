@@ -3,6 +3,7 @@
 #import <memory>
 #import <fstream>
 #include <sstream>
+#include <algorithm>
 
 using namespace kris;
 
