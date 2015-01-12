@@ -22,6 +22,8 @@ namespace kris {
             int sjalvaktning = 100;
 
             void contestant_move();
+            KabbalaAttack const &pick_at_random(std::vector<KabbalaAttack> const &attacks);
+            void print_status();
         public:
 
             KabblaMinigame(Environment *environment, Politician *contestant, Hero *hero)
@@ -30,7 +32,6 @@ namespace kris {
 
 
             void kabbla();
-
         };
     }
 }

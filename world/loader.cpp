@@ -52,6 +52,22 @@ void read_item(json &obj, Environment* env) {
     }
 }
 
+std::vector<KabbalaAttack> read_attacks(json & obj, Politician * pol) {
+    std::vector<KabbalaAttack> vec;
+
+
+    for (json & o : obj) {
+        int p = o["probability"];
+        int r = o["resistance"];
+        int s = o["sjalvaktning"];
+        std::string m = o["message"];
+        KabbalaAttack k(p, r, s, m);
+        vec.push_back(k);
+    }
+
+    return vec;
+}
+
 void read_actor(json & obj, Environment * environment) {
 
     std::string id = obj["@id"];
@@ -71,6 +87,11 @@ void read_actor(json & obj, Environment * environment) {
         if (obj.find("resistance") != obj.end()) {
             int pt = obj["resistance"];
             pol->setResistancePoints(pt);
+        }
+
+        if (obj.find("kabbala") != obj.end()) {
+            std::vector<KabbalaAttack> attacks = read_attacks(obj["kabbala"]["attacks"], pol);
+            pol->setAttacks(attacks);
         }
 
         environment->getActors()[name] = pol;

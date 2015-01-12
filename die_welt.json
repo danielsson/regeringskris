@@ -57,6 +57,7 @@
           "kabbala": {
             "attacks": [
               {
+                "@type": "KabbalaAttack",
                 "message": "Annie viftade med en kopia av Och Världen Skälvde. Det var effektivt.",
                 "sjalvaktning": -30,
                 "resistance": 10,

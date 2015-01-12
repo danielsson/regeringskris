@@ -15,6 +15,21 @@ namespace kris {
         };
 
 
+        struct KabbalaAttack {
+            std::string message;
+            int sjalvaktning_modifier;
+            int resistance_modifier;
+            int probability;
+
+
+            KabbalaAttack(int probability, int resistance_modifier, int sjalvaktning_modifier, std::string message)
+                    : probability(probability),
+                      resistance_modifier(resistance_modifier),
+                      sjalvaktning_modifier(sjalvaktning_modifier),
+                      message(message) {
+            }
+        };
+
 
         class Entity {
 
@@ -144,6 +159,8 @@ namespace kris {
             Party affiliation;
             int resistancePoints = 0;
 
+            std::vector<KabbalaAttack> attacks;
+
         public:
             static std::map<std::string, Party> partyMapping;
 
@@ -165,9 +182,8 @@ namespace kris {
                 return affiliation;
             }
 
-
             /**
-            * How resistant are this politician against your politics?käbb
+            * How resistant are this politician against your politics?
             */
             int getResistancePoints() const {
                 return resistancePoints;
@@ -175,6 +191,15 @@ namespace kris {
 
             void setResistancePoints(int resistancePoints) {
                 Politician::resistancePoints = resistancePoints;
+            }
+
+
+            std::vector<KabbalaAttack> const &getAttacks() const {
+                return attacks;
+            }
+
+            void setAttacks(std::vector<KabbalaAttack> &attacks) {
+                Politician::attacks = attacks;
             }
         };
 
