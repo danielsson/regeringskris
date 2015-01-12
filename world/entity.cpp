@@ -1,6 +1,7 @@
 #include <sstream>
 #include "entity.h"
 #include "../fight/kabbla.h"
+#include "../GameEngine.h"
 
 using namespace kris::entities;
 using namespace kris::util;
@@ -143,7 +144,7 @@ Physible *Container::get_item(const std::string &name) {
 
 bool Physible::iequals(const std::string& a, const std::string& b)
 {
-    unsigned int sz = a.size();
+    unsigned long sz = a.size();
     if (b.size() != sz)
         return false;
     for (unsigned int i = 0; i < sz; ++i)
@@ -228,4 +229,22 @@ void Actor::kabbla(Hero *hero) {
 void Politician::kabbla(Hero *hero) {
     kabbala::KabblaMinigame kabblaMinigame(nullptr, this, hero);
     kabblaMinigame.kabbla();
+}
+
+bool Oracle::act() {
+
+    std::cout << "Det är farligt att gå ensam, ta denna:\n";
+
+    Physible * p = new HolyArtifact("Internationalen", "I orginalversion, men Göran Greiders autograf på omslaget.");
+
+
+
+
+    return true;
+}
+
+bool HolyArtifact::use() {
+
+    return true;
+
 }

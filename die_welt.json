@@ -128,7 +128,7 @@
           "@type": "GenericItem",
 
           "name": "Jätteklubba",
-          "decription": "Talmannens jätteklubba som verkar ha blivit kvarglömd på ett bord.",
+          "decription": "Talmannens jätteklubba som verkar ha blivit kvarglömd på ett bord."
         },
         {
           "@id": "@PSP",
@@ -192,7 +192,7 @@
           "description": "En tom färgburk med alla möjliga sorters varningssymboler. Burken har ett klistermärke som visar att den är värdsbäst på att döda haj-bebisar."
         },
         {
-          "@id": "anka",
+          "@id": "@anka",
           "@type": "GenericItem",
 
           "name": "Gummianka",
@@ -206,47 +206,75 @@
 
       "name": "LO-HK",
       "description": "LOs högkvarter. Här finns det både stora och små höns att prata med."
+    },
+    {
+      "@id": "@stuga",
+      "@type": "GenericRoom",
+
+      "name": "Göran Greiders Stuga",
+      "description": "Pittoresk stuga i värmland. Här finns det värme, och soffor med katthår på. Du ser ingen katt.",
+
+
+      "items": [
+        {
+          "@id": "@hjarta",
+          "@type": "GenericItem",
+          "name": "Hjärta",
+          "description": "Ett hjärta e alltid rött, Ett hjärta har alltid rätt, Ett hjärta stinker blod och svett, Ett hjärta har alltid rätt.",
+          "moveable": false
+        }
+      ],
+
+      "actors": [
+        {
+          "@id": "@greider",
+          "@type": "Actor",
+          "name": "Greider",
+          "description": "Göran Greider: ”Är det inte dags att utlysa nyval?”",
+          "allegiance": "S",
+          "image": "greider.txt",
+          "resistance": 0
+        }
+      ]
     }
 
   ],
-  "actors": [
-    {
-      "@id": "@annie_lööf",
-      "@type": "Politician",
-      "name": "Annie Lööf"
-    },
-    {
-      "@id": "@asa_romson",
-      "@type": "Politician",
-      "name": "Åsa Romson"
-    },
-    {
-      "@id": "@fredrik_reinfeldt",
-      "@type": "Actor",
-      "name": "Fredrik Reinfeldt"
-    },
-    {
-      "@id": "@kinberg_batra",
-      "@type": "Politician",
-      "name": "Anna Kinberg Batra"
-    },
-    {
-      "@id": "@magdalena_andersson",
-      "@type": "Politician",
-      "name": "Magdalena Andersson"
-    },
-    {
-      "@id": "@goran_persson",
-      "@type": "Actor",
-      "name": "Göran Persson"
-    }
-  ],
+
   "neighbors": {
     "@kontor": {
       "S": "@korridor"
     },
     "@korridor": {
-      "N": "@kontor"
+      "N": "@kontor",
+      "E": "@plenisalen",
+      "S": "@torget"
+    },
+    "@plenisalen": {
+      "W": "@korridor"
+    },
+    "@torget": {
+      "N": "@korridor",
+      "W": "@sturep",
+      "S": "@norrmalarstrand",
+      "E": "@lohk"
+    },
+    "@norrmalarstrand": {
+      "N": "@torget",
+      "E": "@husbat",
+      "W": "@stuga"
+    },
+    "@sturep": {
+      "E": "@torget"
+    },
+    "@lohk": {
+      "W": "@torget"
+    },
+    "@husbat": {
+      "W": "@norrmalarstrand"
+    },
+    "@stuga": {
+      "E": "@norrmalarstrand"
     }
+
   }
 }

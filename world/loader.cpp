@@ -32,7 +32,7 @@ int getDefault(json &obj, std::string key, int _default) {
     }
 }
 
-void read_item(json &obj, Environment* env) {
+void Loader::read_item(json &obj, Environment* env) {
 
     std::string id = obj["@id"];
     std::string name = obj["name"];
@@ -41,6 +41,7 @@ void read_item(json &obj, Environment* env) {
 
     if (obj["@type"] == GenericItem::type()) {
         GenericItem *item = new GenericItem(name, description, weight);
+        add_managed_pointer(item);
         item->setId(id);
 
         if (obj.find("moveable") != obj.end()) {
@@ -53,7 +54,7 @@ void read_item(json &obj, Environment* env) {
     }
 }
 
-std::vector<KabbalaAttack> read_attacks(json & obj, Politician * pol) {
+std::vector<KabbalaAttack> Loader::read_attacks(json & obj, Politician * pol) {
     std::vector<KabbalaAttack> vec;
 
 
@@ -69,7 +70,7 @@ std::vector<KabbalaAttack> read_attacks(json & obj, Politician * pol) {
     return vec;
 }
 
-void read_actor(json & obj, Environment * environment) {
+void Loader::read_actor(json & obj, Environment * environment) {
 
     std::string id = obj["@id"];
     std::string name = obj["name"];
@@ -78,7 +79,8 @@ void read_actor(json & obj, Environment * environment) {
     if (obj["@type"] == "Politician") {
         std::string str = obj["allegiance"];
         Party p = Politician::partyMapping[str];
-        Politician* pol = new Politician(name, description, p);
+        Politician *pol = new Politician(name, description, p);
+        add_managed_pointer(pol);
         pol->setId(id);
 
         if (obj.find("image") != obj.end()) {
@@ -98,13 +100,19 @@ void read_actor(json & obj, Environment * environment) {
 
         environment->getActors()[name] = pol;
 
+    } else if (obj["@type"] == "Actor") {
+        Actor* a = new Actor(name, description, nullptr);
+        add_managed_pointer(a);
+        a->setId(id);
+        environment->getActors()[name] = a;
+
     } else {
         std::cerr << "Unknown actor @type " << obj["@type"] << std::endl;
     }
 
 }
 
-void read_environment(json &obj, std::map<std::string, Environment *> &environments) {
+void Loader::read_environment(json &obj, std::map<std::string, Environment *> &environments) {
     std::string id = obj["@id"];
 
     Environment* retval = 0;
@@ -114,6 +122,7 @@ void read_environment(json &obj, std::map<std::string, Environment *> &environme
 
     if (obj["@type"] == GenericRoom::type()) {
         retval = new GenericRoom(name, description);
+        add_managed_pointer(retval);
     }
 
     if (obj.find("items") != obj.end()) {
@@ -136,13 +145,13 @@ void read_environment(json &obj, std::map<std::string, Environment *> &environme
 
 
 
-void read_environments(json &obj, std::map<std::string, Environment *> &environments) {
+void Loader::read_environments(json &obj, std::map<std::string, Environment *> &environments) {
     for(json & room : obj) {
         read_environment(room, environments);
     }
 }
 
-void read_neighbors(json &obj, std::map<std::string, Environment *> &environments) {
+void Loader::read_neighbors(json &obj, std::map<std::string, Environment *> &environments) {
 
     for(json::iterator it = obj.begin(); it != obj.end(); ++it) {
         Environment* from = environments[it.key()];
@@ -183,4 +192,32 @@ Environment *Loader::construct() {
 
 Loader::Loader(std::string string) {
     file_path = string;
+}
+
+void Loader::add_managed_pointer(Actor *ptr) {
+    actors.push_back(ptr);
+}
+
+void Loader::add_managed_pointer(Physible *ptr) {
+    physibles.push_back(ptr);
+}
+
+void Loader::add_managed_pointer(Environment *ptr) {
+    envs.push_back(ptr);
+}
+
+Loader::~Loader() {
+
+    for(Actor * a : actors) {
+        delete a;
+    }
+
+    for(Physible * p : physibles) {
+        delete p;
+    }
+
+    for(Environment * e : envs) {
+        delete e;
+    }
+
 }

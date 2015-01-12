@@ -9,6 +9,7 @@
 #include <map>
 
 namespace kris {
+
     namespace env {
         enum Direction {
             N, E, S, W
@@ -52,6 +53,8 @@ namespace kris {
 
             virtual void onPick(entities::Physible*);
             virtual void onDrop(entities::Physible*);
+
+            virtual ~Environment() {};
 
 
             entities::Container& getItems() {

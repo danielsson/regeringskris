@@ -125,6 +125,7 @@ void KabblaMinigame::print_status() {
 
 void KabblaMinigame::kabbla() {
     std::cout << "Bring it on!\n";
+    int beginning_resistance = contestant->getResistancePoints();
 
     if (contestant->getImageName().size() > 0) {
 
@@ -134,7 +135,7 @@ void KabblaMinigame::kabbla() {
 
     std::cout << "Du måste övertyga Annie om att acceptera er budget!\n";
 
-    while (isPlaying && contestant->getResistancePoints() > 0) {
+    while (isPlaying && contestant->getResistancePoints() > 0 && sjalvaktning > 0) {
 
         print_status();
 
@@ -164,8 +165,14 @@ void KabblaMinigame::kabbla() {
         contestant_move();
     }
 
+    if (sjalvaktning <= 0) {
+        std::cout << "Å nej, du har slut på självaktning. Synd.";
+        contestant->setResistancePoints(beginning_resistance);
+    }
+
     if (contestant->getResistancePoints() < 0) {
         std::cout << "Grattis, du övertygade " << contestant->name() << " om att rösta på ert budgetförslag!\n";
+        contestant->giveConsent();
 
     } else {
         std::cout << "Det är bara en massa käbbel!!" << std::endl;

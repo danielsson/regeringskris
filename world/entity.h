@@ -7,6 +7,7 @@
 #include <map>
 #include "../util.h"
 
+
 namespace kris {
     namespace entities {
 
@@ -44,6 +45,8 @@ namespace kris {
             void setId(std::string &id) {
                 Entity::id = id;
             }
+
+            virtual ~Entity() {}
         };
 
 
@@ -121,6 +124,21 @@ namespace kris {
         class Purse : Container {
 
         };
+
+        class HolyArtifact : public Physible {
+            virtual bool use();
+
+
+        public:
+            HolyArtifact(std::string _name, std::string _desc) {
+                this->_desc = _desc;
+                this->_name = _name;
+            }
+        };
+
+
+
+
 
 
         class Hero;
@@ -210,6 +228,15 @@ namespace kris {
 
             void setAttacks(std::vector<KabbalaAttack> &attacks) {
                 Politician::attacks = attacks;
+            }
+        };
+
+        class Oracle : public Actor {
+
+
+        public:
+            virtual bool act();
+            Oracle(std::string &name, std::string &desc, Physible *weakS) : Actor(name, desc, weakS) {
             }
         };
 

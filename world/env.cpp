@@ -50,6 +50,13 @@ std::string Environment::description() {
         ss << it->second->describe();
     }
 
+    ss << std::endl << "Directions:" << std::endl;
+    if(n_N) ss << "N " << n_N->name() << std::endl;
+    if(n_E) ss << "E " << n_E->name() << std::endl;
+    if(n_S) ss << "S " << n_S->name() << std::endl;
+    if(n_W) ss << "W " << n_W->name() << std::endl;
+
+
     return ss.str();
 }
 
