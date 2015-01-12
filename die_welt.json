@@ -40,8 +40,33 @@
           "name": "Kreditkort",
           "description": "Regeringens kreditkort. Får endast användas för rikets bästa."
         }
-      ],
+      ]
 
+
+    },
+    {
+      "@id": "@korridor",
+      "@type": "GenericRoom",
+
+      "name": "Åsiktskorridoren",
+      "description": "En korridor som alla anser har fel storlek, även om man inte kommer överrens om vad som är den rätta storleken.",
+      "items": [
+        {
+          "@id": "@bok",
+          "@type": "GenericItem",
+
+          "name": "Sveriges Rikes Lag",
+          "description": "En utmärkt brevpress.",
+          "weight": 10
+        },
+        {
+          "@id": "@sko",
+          "@type": "GenericItem",
+
+          "name": "Sko",
+          "description": "En röd klacksko med initialerna AL inskrivna på hälen."
+        }
+      ],
       "actors": [
         {
           "@id": "@annie_loof",
@@ -89,30 +114,6 @@
             ]
           }
 
-        }
-      ]
-    },
-    {
-      "@id": "@korridor",
-      "@type": "GenericRoom",
-
-      "name": "Åsiktskorridoren",
-      "description": "En korridor som alla anser har fel storlek, även om man inte kommer överrens om vad som är den rätta storleken.",
-      "items": [
-        {
-          "@id": "@bok",
-          "@type": "GenericItem",
-
-          "name": "Sveriges Rikes Lag",
-          "description": "En utmärkt brevpress.",
-          "weight": 10
-        },
-        {
-          "@id": "@sko",
-          "@type": "GenericItem",
-
-          "name": "Sko",
-          "description": "En röd klacksko med initialerna AL inskrivna på hälen."
         }
       ]
     },
@@ -197,6 +198,48 @@
 
           "name": "Gummianka",
           "desciption": "En gummianka så väl använd att färgen som var ögonen har försvunnit."
+        }
+      ],
+      "actors": [
+        {
+          "@id": "@asa_romson",
+          "@type": "Politician",
+
+          "name": "Åsa",
+          "description": "Romson. Håller för fullt på och målar med en glad min.",
+          "allegiance": "MP",
+          "desires": "@tree",
+          "image": "romson.txt",
+          "resistance": 200,
+
+          "kabbala": {
+            "attacks": [
+              {
+                "message": "Åsa blir påkommen med att måla sin båt med miljöfarlig färg",
+                "sjalvaktning": 10,
+                "resistance": -200,
+                "probability": 20
+              },
+              {
+                "message": "Åsa kritiserade kärnkraften och vann ett par poäng.",
+                "sjalvaktning": -10,
+                "resistance": 50,
+                "probability": 50
+              },
+              {
+                "message": "Gustav Fridolin hoppar in, och räddar ett par poäng åt åsa genom att hänvisa till sin korta tid som lärare.",
+                "sjalvaktning": -10,
+                "resistance": 200,
+                "probability": 20
+              },
+              {
+                "message": "Åsa ifrågasätter copyrighten på bilden ovan",
+                "sjalvaktning": 10,
+                "resistance": 50,
+                "probability": 20
+              },
+            ]
+          }
         }
       ]
     },

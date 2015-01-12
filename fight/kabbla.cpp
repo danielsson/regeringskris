@@ -18,9 +18,9 @@ std::pair<std::string, int> KabblaMinigame::getNewspaper() {
         default:
         case 3: return std::pair<std::string, int>("Dagens Industri", 6);
         case 4: return std::pair<std::string, int>("Metro", 4);
-        case 5: return std::pair<std::string, int>("Fira Tider", -10);
+        case 5: return std::pair<std::string, int>("Fria Tider", -10);
         case 6: return std::pair<std::string, int>("en våtservett", 0);
-        case 7: return std::pair<std::string, int>("whiteboarden i 1537", 0);
+        case 7: return std::pair<std::string, int>("Nyheter24", rand() % 5);
         case 8: return std::pair<std::string, int>("New York Times", 100);
 
 
@@ -134,7 +134,7 @@ void KabblaMinigame::kabbla() {
         std::cout << image << std::endl;
     }
 
-    std::cout << "Du måste övertyga Annie om att acceptera er budget!\n";
+    std::cout << "Du måste övertyga " << contestant->name() << " om att acceptera er budget!\n";
 
     while (isPlaying && contestant->getResistancePoints() > 0 && sjalvaktning > 0) {
 
@@ -167,7 +167,7 @@ void KabblaMinigame::kabbla() {
     }
 
     if (sjalvaktning <= 0) {
-        std::cout << "Å nej, du har slut på självaktning. Synd.";
+        std::cout << "Å nej, du har slut på självaktning. Synd.\n";
         contestant->setResistancePoints(beginning_resistance);
     }
 

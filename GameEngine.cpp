@@ -85,7 +85,7 @@ void GameEngine::cmd_give(std::vector<std::string> const &aConst) {
     }
 
     if (environment->getActors().find(actor) != environment->getActors().end()) {
-        environment->getActors()[actor]->offered(p);
+        (environment->getActors()).at(actor)->offered(p);
     } else {
         std::cout << "Ingen jävel som heter så här." << std::endl;
     }
@@ -141,7 +141,7 @@ void GameEngine::cmd_use(std::vector<std::string> const &cmd) {
     }
 
     if (environment->getActors().find(cmd[1]) != environment->getActors().end()) {
-        environment->getActors()[cmd[1]]->act();
+        environment->getActors().at(cmd[1])->act();
     } else {
         std::cout << "Vet inte vad " << cmd[1] << " är \n";
     }
@@ -165,7 +165,7 @@ void GameEngine::cmd_kabbla(std::vector<std::string> const &cmd) {
     const std::string &name = cmd[1];
 
     if (environment->getActors().find(name) != environment->getActors().end()) {
-        environment->getActors()[name]->kabbla(hero);
+        environment->getActors().at(name)->kabbla(hero);
     } else {
         std::cout << "Vet inte vem " << name << " är \n";
     }
@@ -218,6 +218,9 @@ void GameEngine::cmd_tally(std::vector<std::string> const &vector) {
     std::cout << "========================================================================\n";
 
     if (count_for > count_against) {
+        std::string s;
+        std::cout << "Tryck enter för att fortsätta...\n";
+        std::getline(std::cin, s);
         Util::print_file("overrenskommelsen.txt");
 
         isRunning = false;
