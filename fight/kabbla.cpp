@@ -10,6 +10,19 @@ using namespace kris::entities;
 using namespace kris::util;
 using namespace kris::kabbala;
 
+std::pair<std::string, int> KabblaMinigame::getNewspaper() {
+    switch (rand() % 5) {
+        case 0: return std::pair<std::string, int>("Aftonbladet", 10);
+        case 1: return std::pair<std::string, int>("Expressen", 3);
+        case 2: return std::pair<std::string, int>("Dagens Nyheter", 1);
+        default:
+        case 3: return std::pair<std::string, int>("Dagens Industri", 0);
+        case 4: return std::pair<std::string, int>("Metro", 4);
+            //case 0: return std::pair<std::string, int>("Aftonbladet", 10);
+
+    }
+}
+
 /**
 * Uses the pobability value to do a weighted random select amongst the attacks.
 */
@@ -40,7 +53,7 @@ void KabblaMinigame::contestant_move() {
     if (contestant->getAttacks().size() > 0) {
         KabbalaAttack a = pick_at_random(contestant->getAttacks());
         std::cout << a.message << std::endl;
-        std::cout << "Din självaktning: " << a.sjalvaktning_modifier
+        std::cout << "> Din självaktning: " << a.sjalvaktning_modifier
                 << " | " << contestant->name() << "s resistans: " << a.resistance_modifier << std::endl;
 
         sjalvaktning += a.sjalvaktning_modifier;
@@ -72,7 +85,7 @@ void KabblaMinigame::print_status() {
 
     std::cout << "Din tur!\n";
     std::cout << "Möjliga drag:\n";
-    std::cout << "\t slåss      Förfall till handgemäng\n";
+    std::cout << "\t debatt     Bjud in SVT-debatt\n";
     std::cout << "\t gåva       Ge " << contestant->name() << " en gåva\n";
     std::cout << "\t fly        Skrik 'CHARLIE HEBDO' och fly i förvirringen när alla försöker förklara hur viktigt de tycker att det är med yttrandefrihet.\n";
     std::cout << "\t inventera  Kontrollera dina fickor\n";
@@ -104,19 +117,15 @@ void KabblaMinigame::kabbla() {
             break;
         }
 
-        if (cmd == "slåss") {
-            std::cout << "Vad är pk nog att göra nu?\n";
-            sjalvaktning = 0;
+        if (cmd == "debatt") {
+            fight();
+
         } else if (cmd == "gåva") {
-            std::cout << "TBI" << std::endl;
-            contestant->setResistancePoints(contestant->getResistancePoints() - 100);
-            sjalvaktning += 20;
+            gift();
         } else if (cmd == "inventera") {
             std::cout << hero->getItems().description();
         } else if (cmd == "smutskasta") {
-            std::cout << "Du kallade " << contestant->name() << " för en osamarbetsvillig toffel i expressen.";
-            contestant->setResistancePoints(contestant->getResistancePoints() + 100);
-            sjalvaktning -= 10;
+            do_dirty_laundry();
         } else {
             std::cout << "Det var inget alternativ!" << std::endl;
         }
@@ -132,3 +141,85 @@ void KabblaMinigame::kabbla() {
     }
 
 }
+
+void KabblaMinigame::do_dirty_laundry() {
+    std::pair<std::string, int> paper = getNewspaper();
+    std::cout << "Du kallade " << contestant->name() << " för en osamarbetsvillig toffel i " << paper.first << std::endl;
+    contestant->setResistancePoints(contestant->getResistancePoints() - 10 * paper.second);
+    sjalvaktning += 10 * paper.second;
+}
+
+void KabblaMinigame::gift() {
+    std::string thing;
+    std::cout << "Dina inventarier: \n";
+    std::cout << hero->getItems().description();
+    std::cout << " Vad vill du ge bort? :> ";
+    std::getline(std::cin, thing);
+
+    Physible* p = hero->getItems().get_item(thing);
+
+    if (p) {
+        std::cout << "Du gav " << p->name() << " till " << contestant->name() << std::endl;
+        hero->getItems().transfer_to(p->name(), contestant->getItems());
+
+
+        if (p->name() == "Glitterpenna") {
+            std::cout << "Du gav bort en glitterpenna och vann därför debatten omedelbart.\n";
+            std::cout << "> Din självaktning: " << 100
+                    << " | " << contestant->name() << "s resistans: " << (-1 * contestant->getResistancePoints()) << std::endl;
+
+            sjalvaktning = 100;
+            contestant->setResistancePoints(0);
+        } else {
+            std::cout << contestant->name() << ": 'Vad fan är det här? Nåja, tack eller whatever.'\n";
+        }
+    }
+
+
+
+}
+
+void KabblaMinigame::fight() {
+    std::cout << "Dags för debatt i SVT Agenda mellan dig och " << contestant->name() << std::endl;
+
+    int xv = rand() % 100;
+
+    if (hero->getItems().get_item("Kolbit")) {
+        std::cout << "Du viftade med kolbiten och vann därför debatten omedelbart.\n";
+        hero->getItems().transfer_to("Kolbit", contestant->getItems());
+        std::cout << "> Din självaktning: " << 100
+                << " | " << contestant->name() << "s resistans: " << (-1 * contestant->getResistancePoints()) << std::endl;
+
+        sjalvaktning = 100;
+        contestant->setResistancePoints(0);
+
+    } else if(contestant->getItems().get_item("Kolbit") && xv > 50) {
+        std::cout << contestant->name() << " viftade med en kolbit och besegrade dig hårt.\n";
+        contestant->getItems().transfer_to("Kolbit", hero->getItems());
+    }
+
+
+    std::pair<std::string, int> paper = getNewspaper();
+
+    if (xv % 3 == 2) {
+        std::cout << paper.first << " skriver att ditt utal förråder din dolda rasism, och allt är dåligt. \n";
+        std::cout << "> Din självaktning: " << (-3 * paper.second)
+                << " | " << contestant->name() << "s resistans: " << (3 * paper.second) << std::endl;
+
+        sjalvaktning -= 3 * paper.second;
+        contestant->setResistancePoints(contestant->getResistancePoints() + 3 * paper.second);
+    }
+
+    if (xv % 2 == 0) {
+        std::cout << "Göran Greider hyllar din debatt i " << paper.first << std::endl;
+        std::cout << "> Din självaktning: " << (10 * paper.second)
+                << " | " << contestant->name() << "s resistans: " << (-100 * paper.second) << std::endl;
+
+        sjalvaktning += 10 * paper.second;
+        contestant->setResistancePoints(contestant->getResistancePoints() - 100 * paper.second);
+    }
+
+
+}
+
+

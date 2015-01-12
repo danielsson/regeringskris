@@ -24,12 +24,15 @@ namespace kris {
             void contestant_move();
             KabbalaAttack const &pick_at_random(std::vector<KabbalaAttack> const &attacks);
             void print_status();
+            void gift();
+            void do_dirty_laundry();
+            void fight();
+            std::pair<std::string, int> getNewspaper();
         public:
 
             KabblaMinigame(Environment *environment, Politician *contestant, Hero *hero)
                     : environment(environment), contestant(contestant), hero(hero) {
             }
-
 
             void kabbla();
         };

@@ -32,9 +32,18 @@ namespace kris {
 
 
         class Entity {
-
+        protected:
+            std::string id;
         public:
             static std::string type();
+
+            std::string &getId() const {
+                return id;
+            }
+
+            void setId(std::string &id) {
+                Entity::id = id;
+            }
         };
 
 

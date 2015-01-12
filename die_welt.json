@@ -79,6 +79,12 @@
                 "sjalvaktning": -90,
                 "resistance": 200,
                 "probability": 10
+              },
+              {
+                "message": "Annie pratar om egoism, och moderatorn krossar henne med en motfråga om den undersökning som viade på att hon var Sveriges mest själv(c)entrerade partiledare.",
+                "sjalvaktning": 50,
+                "resistance": -300,
+                "probability": 10
               }
             ]
           }
