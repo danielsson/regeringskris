@@ -11,6 +11,8 @@ void GameEngine::run() {
 
     print_welcome();
 
+    std::srand((unsigned int) std::time(0));
+
     while (isRunning) {
         std::cout << environment->name() << ":> ";
         std::getline(std::cin, cmd);
