@@ -177,7 +177,50 @@
       "@type": "GenericRoom",
 
       "name": "Norrmälarstrand",
-      "description": "Ett mysigt ställe som hör till Kungsholmen. Nära och bra till Stadshuset, det finns även en del båtar i närheten."
+      "description": "Ett mysigt ställe som hör till Kungsholmen. Nära och bra till Stadshuset, det finns även en del båtar i närheten.",
+
+      "actors": [
+        {
+          "@id": "@kinberg_batra",
+          "@type": "Politician",
+
+          "name": "Anna",
+          "description": "Kinberg-Batra. I full färd att be om ursäkt för något hon sagt för länge sedan till en förbipasserande bonde.",
+          "allegiance": "M",
+          "desires": "@?",
+          "image": "batra.txt",
+          "resistance": 1000,
+          "kabbala": {
+            "attacks": [
+              {
+                "message": "Anna förklarar att Stockholmare är smartare än lantisar.",
+                "sjalvaktning": 20,
+                "resistance": -400,
+                "probability": 20
+              },
+              {
+                "message": "Anna förklarar att Ronald Reagan och Margaret Thatcher är hennest största idoler.",
+                "sjalvaktning": -20,
+                "resistance": 40,
+                "probability": 40
+              },
+              {
+                "message": "(Tystnad)",
+                "sjalvaktning": -20,
+                "resistance": 200,
+                "probability": 20
+              },
+              {
+                "message": "(Anna transformeras till ett mumintroll)",
+                "sjalvaktning": -10,
+                "resistance": 300,
+                "probability": 20
+              }
+
+            ]
+          }
+        }
+      ]
     },
     {
       "@id": "@husbat",
@@ -237,7 +280,7 @@
                 "sjalvaktning": 10,
                 "resistance": 50,
                 "probability": 20
-              },
+              }
             ]
           }
         }
