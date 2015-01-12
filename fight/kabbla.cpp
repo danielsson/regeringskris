@@ -11,13 +11,44 @@ using namespace kris::util;
 using namespace kris::kabbala;
 
 std::pair<std::string, int> KabblaMinigame::getNewspaper() {
-    switch (rand() % 5) {
+    switch (rand() % 8) {
         case 0: return std::pair<std::string, int>("Aftonbladet", 10);
         case 1: return std::pair<std::string, int>("Expressen", 3);
         case 2: return std::pair<std::string, int>("Dagens Nyheter", 1);
         default:
-        case 3: return std::pair<std::string, int>("Dagens Industri", 0);
+        case 3: return std::pair<std::string, int>("Dagens Industri", 6);
         case 4: return std::pair<std::string, int>("Metro", 4);
+        case 5: return std::pair<std::string, int>("Fira Tider", -10);
+        case 6: return std::pair<std::string, int>("en våtservett", 0);
+        case 7: return std::pair<std::string, int>("whiteboarden i 1537", 0);
+
+    }
+}
+
+std::string KabblaMinigame::getComparison() {
+    switch (rand() % 21) {
+        case 0: return "toffel";
+        case 1: return "saltgurka";
+        case 2: return "hal ål";
+        default:
+        case 3: return "fascist";
+        case 4: return "poltergeist";
+        case 5: return "termos";
+        case 6: return "loka";
+        case 7: return "hippie";
+        case 8: return "buss utan hjul";
+        case 9: return "adam sandler";
+        case 10: return "foliehatt";
+        case 11: return "elakast";
+        case 12: return "tjock";
+        case 13: return "känslokall";
+        case 14: return "landsmoder";
+        case 15: return "avpolleterad";
+        case 16: return "oomkullvältelig";
+        case 17: return "fritös";
+        case 18: return "bänkens prydnad";
+        case 19: return "missfoster";
+        case 20: return "tarvligt kräk";
             //case 0: return std::pair<std::string, int>("Aftonbladet", 10);
 
     }
@@ -85,7 +116,7 @@ void KabblaMinigame::print_status() {
 
     std::cout << "Din tur!\n";
     std::cout << "Möjliga drag:\n";
-    std::cout << "\t debatt     Bjud in SVT-debatt\n";
+    std::cout << "\t debatt     Bjud in till SVT-debatt\n";
     std::cout << "\t gåva       Ge " << contestant->name() << " en gåva\n";
     std::cout << "\t fly        Skrik 'CHARLIE HEBDO' och fly i förvirringen när alla försöker förklara hur viktigt de tycker att det är med yttrandefrihet.\n";
     std::cout << "\t inventera  Kontrollera dina fickor\n";
@@ -144,7 +175,12 @@ void KabblaMinigame::kabbla() {
 
 void KabblaMinigame::do_dirty_laundry() {
     std::pair<std::string, int> paper = getNewspaper();
-    std::cout << "Du kallade " << contestant->name() << " för en osamarbetsvillig toffel i " << paper.first << std::endl;
+    std::cout << "Du kallade " << contestant->name() << " för " << getComparison()
+    << " i " << paper.first << std::endl;
+
+    std::cout << "> Din självaktning: " << 10 * paper.second
+            << " | " << contestant->name() << "s resistans: " << (-10 * paper.second) << std::endl;
+
     contestant->setResistancePoints(contestant->getResistancePoints() - 10 * paper.second);
     sjalvaktning += 10 * paper.second;
 }
@@ -163,7 +199,7 @@ void KabblaMinigame::gift() {
         hero->getItems().transfer_to(p->name(), contestant->getItems());
 
 
-        if (p->name() == "Glitterpenna") {
+        if (p->getId() == "@penna") {
             std::cout << "Du gav bort en glitterpenna och vann därför debatten omedelbart.\n";
             std::cout << "> Din självaktning: " << 100
                     << " | " << contestant->name() << "s resistans: " << (-1 * contestant->getResistancePoints()) << std::endl;
@@ -173,6 +209,9 @@ void KabblaMinigame::gift() {
         } else {
             std::cout << contestant->name() << ": 'Vad fan är det här? Nåja, tack eller whatever.'\n";
         }
+    } else {
+        std::cout << "Du försökte ge bort en " << thing << " men hade ingen sådan.\n";
+        std::cout << contestant->name() << " var föga imponerad av gesten.\n";
     }
 
 
@@ -201,8 +240,8 @@ void KabblaMinigame::fight() {
 
     std::pair<std::string, int> paper = getNewspaper();
 
-    if (xv % 3 == 2) {
-        std::cout << paper.first << " skriver att ditt utal förråder din dolda rasism, och allt är dåligt. \n";
+    if (xv % 6 == 2) {
+        std::cout << paper.first << " skriver att vad du förmodligen menade när du sade att gemenskapen ska stärkas, egentligen är antisemtiskt. \n";
         std::cout << "> Din självaktning: " << (-3 * paper.second)
                 << " | " << contestant->name() << "s resistans: " << (3 * paper.second) << std::endl;
 

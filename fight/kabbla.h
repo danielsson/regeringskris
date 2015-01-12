@@ -28,6 +28,7 @@ namespace kris {
             void do_dirty_laundry();
             void fight();
             std::pair<std::string, int> getNewspaper();
+            std::string getComparison();
         public:
 
             KabblaMinigame(Environment *environment, Politician *contestant, Hero *hero)

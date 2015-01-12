@@ -37,7 +37,7 @@ namespace kris {
         public:
             static std::string type();
 
-            std::string &getId() const {
+            std::string const &getId() const {
                 return id;
             }
 
