@@ -41,6 +41,7 @@ void read_item(json &obj, Environment* env) {
 
     if (obj["@type"] == GenericItem::type()) {
         GenericItem *item = new GenericItem(name, description, weight);
+        item->setId(id);
 
         if (obj.find("moveable") != obj.end()) {
             item->setMoveable(obj["moveable"]);
@@ -78,6 +79,7 @@ void read_actor(json & obj, Environment * environment) {
         std::string str = obj["allegiance"];
         Party p = Politician::partyMapping[str];
         Politician* pol = new Politician(name, description, p);
+        pol->setId(id);
 
         if (obj.find("image") != obj.end()) {
             std::string img = obj["image"];
@@ -126,8 +128,9 @@ void read_environment(json &obj, std::map<std::string, Environment *> &environme
         }
     }
 
-    if (retval)
+    if (retval) {
         environments[id] = retval;
+    }
 }
 
 
