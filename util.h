@@ -14,6 +14,11 @@ namespace kris {
         public:
             virtual bool handleCommand(std::string &) = 0;
         };
+
+        class Util {
+        public:
+            static std::string get_file_contents(const std::string & filename);
+        };
     }
 }
 

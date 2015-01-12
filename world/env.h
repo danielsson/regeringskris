@@ -1,10 +1,12 @@
+
+
+#ifndef ENV_GUARD
+#define ENV_GUARD
+
 #include <vector>
 #include "../util.h"
 #include "entity.h"
 #include <map>
-
-#ifndef ENV_GUARD
-#define ENV_GUARD
 
 namespace kris {
     namespace env {
@@ -13,7 +15,6 @@ namespace kris {
 
 
         };
-
 
 
         class Environment {
@@ -42,15 +43,15 @@ namespace kris {
 
             static std::string type();
 
-            virtual void onEntry(entities::Actor);
+            virtual void onEntry(entities::Actor*);
 
             /**
             * Returns true to block departure.
             */
-            virtual bool onDeparture(entities::Actor);
+            virtual bool onDeparture(entities::Actor*);
 
-            virtual void onPick(entities::Physible);
-            virtual void onDrop(entities::Physible);
+            virtual void onPick(entities::Physible*);
+            virtual void onDrop(entities::Physible*);
 
 
             entities::Container& getItems() {

@@ -5,10 +5,12 @@
 #include "env.h"
 #include "loader.h"
 #include "../json/json.h"
+#include "../util.h"
 
 using namespace kris;
 using namespace kris::env;
 using namespace kris::entities;
+using namespace kris::util;
 
 using json = nlohmann::json;
 
@@ -127,7 +129,7 @@ void read_neighbors(json &obj, std::map<std::string, Environment *> &environment
 
 Environment *Loader::construct() {
 
-    std::string world_file = get_file_contents(file_path);
+    std::string world_file = Util::get_file_contents(file_path);
     std::map<std::string, Environment*> environments;
 
     auto obj = json::parse(world_file);
@@ -148,24 +150,7 @@ Environment *Loader::construct() {
 
 
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wsign-conversion"
-std::string Loader::get_file_contents(const std::string & filename)
-{
-    std::ifstream in(filename, std::ios::in | std::ios::binary);
-    if (in)
-    {
-        std::string contents;
-        in.seekg(0, std::ios::end);
-        contents.resize(in.tellg());
-        in.seekg(0, std::ios::beg);
-        in.read(&contents[0], contents.size());
-        in.close();
-        return(contents);
-    }
-    throw(errno);
-}
-#pragma clang diagnostic pop
+
 
 Loader::Loader(std::string string) {
     file_path = string;

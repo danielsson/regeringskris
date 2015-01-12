@@ -6,7 +6,7 @@
       "@id": "@kontor",
       "@type": "GenericRoom",
 
-      "name": "Stadsministerns kontor",
+      "name": "Statsministerns kontor",
       "description": "Ett kontor mycket passande för en lägre mellanchef på ett halvstatligt pappersbruk.",
       "items": [
         {
@@ -47,10 +47,11 @@
           "@id": "@annie_loof",
           "@type": "Politician",
 
-          "name": "Annie Lööf",
-          "description": "”I somras läste jag Ayn Rands Atlas Shrugged och blev helt betagen. Boken är den absolut i särklass bästa bok jag har läst. Den ryckte med mig, den berörde och den fick tanken att växa.”",
+          "name": "Annie",
+          "description": "Annie Lööf:”I somras läste jag Ayn Rands Atlas Shrugged och blev helt betagen. Boken är den absolut i särklass bästa bok jag har läst. Den ryckte med mig, den berörde och den fick tanken att växa.”",
           "allegiance": "C",
-          "desires": "@sko"
+          "desires": "@sko",
+          "image": "annie.txt"
 
         }
       ]

@@ -47,6 +47,8 @@ namespace kris {
         void cmd_help(std::vector<std::string> const &);
         void cmd_inventory(std::vector<std::string> const &);
 
+        void cmd_kabbla(std::vector<std::string> const &);
+
 
 
     };

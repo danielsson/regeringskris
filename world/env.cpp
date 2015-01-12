@@ -18,17 +18,17 @@ Environment*  Environment::neighbor(Direction& direction) {
     }
 }
 
-void Environment::onEntry(kris::entities::Actor actor) {}
+void Environment::onEntry(kris::entities::Actor* actor) {}
 
-bool Environment::onDeparture(kris::entities::Actor actor) {
+bool Environment::onDeparture(kris::entities::Actor* actor) {
     return false;
 }
 
-void Environment::onPick(kris::entities::Physible physible) {
+void Environment::onPick(kris::entities::Physible* physible) {
 
 }
 
-void Environment::onDrop(kris::entities::Physible physible) {
+void Environment::onDrop(kris::entities::Physible* physible) {
 
 }
 

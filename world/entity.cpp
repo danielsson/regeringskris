@@ -2,6 +2,7 @@
 #include "entity.h"
 
 using namespace kris::entities;
+using namespace kris::util;
 
 std::map<std::string, Party> Politician::partyMapping{
         {"VPK", VPK},
@@ -159,6 +160,8 @@ std::string Container::description() const {
 }
 
 bool Physible::use() {
+
+    std::cout << "Kan inte använda " << name() << std::endl;
     return false;
 }
 
@@ -200,4 +203,21 @@ Container::TransferError Container::transfer_to(const std::string &name, Contain
     other.add_item(p);
 
     return OK;
+}
+
+void Actor::kabbla(Actor *hero) {
+    std::cout << "Jag vill inte bråka!\n";
+}
+
+void Politician::kabbla(Actor *hero) {
+    std::cout << "Bring it on!\n";
+
+    if (image_name.size() > 0) {
+
+        std::string image = Util::get_file_contents("people/" + image_name);
+        std::cout << image << std::endl;
+    }
+
+
+
 }

@@ -1,10 +1,11 @@
-#include <vector>
-#include <map>
-#include "../util.h"
+
 
 #ifndef ENTITY_GUARD
 #define ENTITY_GUARD
 
+#include <vector>
+#include <map>
+#include "../util.h"
 
 namespace kris {
     namespace entities {
@@ -117,6 +118,7 @@ namespace kris {
 
             virtual std::string describe();
 
+            virtual void kabbla(Actor * hero);
 
             std::string const &getImageName() const {
                 return image_name;
@@ -152,6 +154,7 @@ namespace kris {
             virtual void rant();
             bool consent();
             virtual std::string describe();
+            virtual void kabbla(Actor * hero);
 
             Party getAffiliation() {
                 return affiliation;

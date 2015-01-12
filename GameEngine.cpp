@@ -135,6 +135,7 @@ void GameEngine::cmd_inventory(std::vector<std::string> const &vector) {
 
 
 void GameEngine::cmd_use(std::vector<std::string> const &cmd) {
+    if (cmd.size() < 2) return;
 
     Physible *p = hero->getItems().get_item(cmd[1]);
     if (p) {
@@ -150,6 +151,8 @@ void GameEngine::cmd_use(std::vector<std::string> const &cmd) {
 
     if (environment->getActors().find(cmd[1]) != environment->getActors().end()) {
         environment->getActors()[cmd[1]]->act();
+    } else {
+        std::cout << "Vet inte vad " << cmd[1] << " är \n";
     }
 
 }
@@ -165,6 +168,19 @@ void GameEngine::cmd_describe(std::vector<std::string> const &d) {
     std::cout << environment->description() << std::endl;
 }
 
+void GameEngine::cmd_kabbla(std::vector<std::string> const &cmd) {
+    if (cmd.size() < 2) return;
+
+    const std::string &name = cmd[1];
+
+    if (environment->getActors().find(name) != environment->getActors().end()) {
+        environment->getActors()[name]->kabbla(hero);
+    } else {
+        std::cout << "Vet inte vem " << name << " är \n";
+    }
+}
+
+
 
 void GameEngine::init_router() {
     router["beskriv"] = &GameEngine::cmd_describe;
@@ -175,6 +191,7 @@ void GameEngine::init_router() {
     router["inventarier"] = &GameEngine::cmd_inventory;
     router["ge"] = &GameEngine::cmd_give;
     router["ta"] = &GameEngine::cmd_take;
+    router["käbbla"] = &GameEngine::cmd_kabbla;
 }
 
 GameEngine::GameEngine() : loader("die_welt.json") {
