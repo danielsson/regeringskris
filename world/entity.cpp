@@ -39,6 +39,7 @@ std::string Hero::type() {
 
 
 bool Actor::act() {
+    this->rant();
     return false;
 }
 
@@ -101,7 +102,7 @@ void Politician::giveConsent() {
 }
 
 void Politician::rant() {
-    if (this->_name == "Annie Lööf") {
+    if (this->_name == "Annie") {
         std::cout << "Jag kommer aldrig, och då menar jag ALDRIG, stödja din regering!" << std::endl;
     }
     else if (this->_name == "Åsa Romson") {

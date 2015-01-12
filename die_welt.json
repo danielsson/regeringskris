@@ -52,7 +52,35 @@
           "allegiance": "C",
           "desires": "@sko",
           "image": "annie.txt",
-          "resistance": 600
+          "resistance": 600,
+
+          "kabbala": {
+            "attacks": [
+              {
+                "message": "Annie viftade med en kopia av Och Världen Skälvde. Det var effektivt.",
+                "sjalvaktning": -30,
+                "resistance": 10,
+                "probability": 36,
+                "items": [
+                  {
+                    "@id": "@toblerone2",
+                    "@type": "GenericItem",
+
+                    "name": "Toblerone",
+                    "description": "En god chokladkaka, som behållits som minnessak.",
+                    "weight": 1,
+                    "moveable": false
+                  }
+                ]
+              },
+              {
+                "message": "Annie tryckte upp en bunt papper från energimyndigheten i ditt ansikte, och du vägrade ta emot. \nDet är supereffektivt, och media hatar dig",
+                "sjalvaktning": -90,
+                "resistance": 200,
+                "probability": 10
+              }
+            ]
+          }
 
         }
       ]
