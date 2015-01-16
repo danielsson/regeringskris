@@ -115,3 +115,19 @@ std::map<std::string, Actor*> & Environment::getActors() {
 std::map<std::string, Actor*> const &Environment::getActors() const {
     return actors;
 }
+
+
+GenericRoom::GenericRoom(std::string name, std::string _description) {
+this->_name = name;
+this->_directions = _directions;
+this->_description = _description;
+}
+
+
+std::string GenericRoom::name() const{
+    return _name;
+}
+
+std::string GenericRoom::type() {
+    return "GenericRoom";
+}

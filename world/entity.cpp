@@ -231,3 +231,96 @@ bool HolyArtifact::use() {
     return true;
 
 }
+
+KabbalaAttack::KabbalaAttack(int probability, int resistance_modifier, int sjalvaktning_modifier, std::string message)
+        : probability(probability),
+          resistance_modifier(resistance_modifier),
+          sjalvaktning_modifier(sjalvaktning_modifier),
+          message(message) {
+}
+
+std::string const &Entity::getId() const {
+    return id;
+}
+
+void Entity::setId(std::string &id) {
+    Entity::id = id;
+}
+
+bool Physible::isMoveable() const {
+    return moveable;
+}
+
+void Physible::setMoveable(bool moveable) {
+    Physible::moveable = moveable;
+}
+
+void Container::add_item(Physible* item) {
+    items.push_back(item);
+}
+
+GenericItem::GenericItem(std::string _name, std::string _desc, int _weight) {
+this->_desc = _desc;
+this->weight = _weight;
+this->_name = _name;
+}
+
+HolyArtifact::HolyArtifact(std::string _name, std::string _desc) {
+    this->_desc = _desc;
+    this->_name = _name;
+}
+
+std::string Actor::type() {
+    return "actor";
+}
+
+std::string const &Actor::getImageName() const {
+    return image_name;
+}
+
+void Actor::setImageName(std::string &image_name) {
+    Actor::image_name = image_name;
+}
+
+Container &Actor::getItems() {
+    return items;
+}
+
+Politician::Politician(std::string str, std::string _desc, Party affiliation) : Actor(str) {
+        _givenConsent = false;
+        _description = _desc;
+        this->affiliation = affiliation;
+}
+
+Party Politician::getAffiliation() {
+    return affiliation;
+}
+
+std::string Politician::type() {
+    return "politician";
+}
+
+/**
+* How resistant are this politician against your politics?
+*/
+int Politician::getResistancePoints() const {
+    return resistancePoints;
+}
+
+void Politician::setResistancePoints(int resistancePoints) {
+    Politician::resistancePoints = resistancePoints;
+}
+
+
+std::vector<KabbalaAttack> const &Politician::getAttacks() const {
+    return attacks;
+}
+
+void Politician::setAttacks(std::vector<KabbalaAttack> &attacks) {
+    Politician::attacks = attacks;
+}
+
+Oracle::Oracle(std::string &name, std::string &desc, Physible *weakS) : Actor(name, desc, weakS) {
+}
+
+Hero::Hero(std::string name) : Actor(name) {};

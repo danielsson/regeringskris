@@ -23,12 +23,7 @@ namespace kris {
             int probability;
 
 
-            KabbalaAttack(int probability, int resistance_modifier, int sjalvaktning_modifier, std::string message)
-                    : probability(probability),
-                      resistance_modifier(resistance_modifier),
-                      sjalvaktning_modifier(sjalvaktning_modifier),
-                      message(message) {
-            }
+            KabbalaAttack(int probability, int resistance_modifier, int sjalvaktning_modifier, std::string message);
         };
 
 
@@ -37,13 +32,8 @@ namespace kris {
             std::string id;
         public:
 
-            std::string const &getId() const {
-                return id;
-            }
-
-            void setId(std::string &id) {
-                Entity::id = id;
-            }
+            std::string const &getId() const;
+            void setId(std::string &id);
 
             virtual ~Entity() {}
         };
@@ -70,13 +60,9 @@ namespace kris {
             virtual bool use();
             bool iequals(const std::string&, const std::string&);
 
-            bool isMoveable() const {
-                return moveable;
-            }
+            bool isMoveable() const;
 
-            void setMoveable(bool moveable) {
-                Physible::moveable = moveable;
-            }
+            void setMoveable(bool moveable);
         };
 
 
@@ -92,9 +78,7 @@ namespace kris {
             Full, NotFound, Immovable, OK
             };
 
-            void add_item(entities::Physible* item) {
-                items.push_back(item);
-            }
+            void add_item(entities::Physible* item);
 
             entities::Physible* get_item(const std::string& name);
             virtual std::string type();
@@ -110,12 +94,7 @@ namespace kris {
         class GenericItem : public Physible {
         public:
 
-            GenericItem(std::string _name, std::string _desc, int _weight) {
-                this->_desc = _desc;
-                this->weight = _weight;
-                this->_name = _name;
-            }
-
+            GenericItem(std::string _name, std::string _desc, int _weight);
 
         };
 
@@ -128,10 +107,7 @@ namespace kris {
 
 
         public:
-            HolyArtifact(std::string _name, std::string _desc) {
-                this->_desc = _desc;
-                this->_name = _name;
-            }
+            HolyArtifact(std::string _name, std::string _desc);
         };
 
 
@@ -165,21 +141,12 @@ namespace kris {
 
             virtual void kabbla(Hero * hero);
 
-            virtual std::string type() {
-                return "actor";
-            }
+            virtual std::string type();
+            std::string const &getImageName() const;
 
-            std::string const &getImageName() const {
-                return image_name;
-            }
+            void setImageName(std::string &image_name);
 
-            void setImageName(std::string &image_name) {
-                Actor::image_name = image_name;
-            }
-
-            entities::Container &getItems() {
-                return items;
-            }
+            entities::Container &getItems() ;
         };
 
 
@@ -197,44 +164,27 @@ namespace kris {
             static std::map<Party, std::string> partyMappingReversed;
 
             virtual bool offered(Physible &);
-            Politician(std::string str, std::string _desc, Party affiliation) : Actor(str) {
-                _givenConsent = false;
-                _description = _desc;
-                this->affiliation = affiliation;
-            }
+            Politician(std::string str, std::string _desc, Party affiliation);
             virtual void giveConsent();
             virtual void rant();
             bool consent();
             virtual std::string describe();
             virtual void kabbla(Hero * hero);
 
-            Party getAffiliation() {
-                return affiliation;
-            }
+            Party getAffiliation();
 
-            virtual std::string type() {
-                return "politician";
-            }
+            virtual std::string type();
 
             /**
             * How resistant are this politician against your politics?
             */
-            int getResistancePoints() const {
-                return resistancePoints;
-            }
+            int getResistancePoints() const ;
 
-            void setResistancePoints(int resistancePoints) {
-                Politician::resistancePoints = resistancePoints;
-            }
+            void setResistancePoints(int resistancePoints);
 
 
-            std::vector<KabbalaAttack> const &getAttacks() const {
-                return attacks;
-            }
-
-            void setAttacks(std::vector<KabbalaAttack> &attacks) {
-                Politician::attacks = attacks;
-            }
+            std::vector<KabbalaAttack> const &getAttacks() const;
+            void setAttacks(std::vector<KabbalaAttack> &attacks);
         };
 
         class Oracle : public Actor {
@@ -242,8 +192,7 @@ namespace kris {
 
         public:
             virtual bool act();
-            Oracle(std::string &name, std::string &desc, Physible *weakS) : Actor(name, desc, weakS) {
-            }
+            Oracle(std::string &name, std::string &desc, Physible *weakS);
         };
 
 
@@ -251,7 +200,7 @@ namespace kris {
 
         public:
 
-            Hero(std::string name) : Actor(name) {};
+            Hero(std::string name);
 
         };
 

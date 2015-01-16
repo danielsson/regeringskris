@@ -81,19 +81,11 @@ namespace kris {
             std::string _directions;
 
         public:
-            GenericRoom(std::string name, std::string _description) {
-                this->_name = name;
-                this->_directions = _directions;
-                this->_description = _description;
-            }
+            GenericRoom(std::string name, std::string _description);
 
-            virtual std::string name() const{
-                return _name;
-            }
+            virtual std::string name() const;
 
-            static std::string type() {
-                return "GenericRoom";
-            }
+            static std::string type() ;
 
         };
 
