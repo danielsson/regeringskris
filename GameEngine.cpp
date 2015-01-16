@@ -31,6 +31,8 @@ void GameEngine::run() {
             std::cout << "Ingen visste vad du menade, men någon fann det kränkande och anmälde det till KU" << std::endl;
         }
     }
+
+    delete hero;
 }
 
 void GameEngine::requestEnd(std::vector<std::string> const &d) {
