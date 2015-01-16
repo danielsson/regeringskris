@@ -42,21 +42,21 @@ std::string Environment::description() const {
     std::stringstream ss;
 
     ss << name() << std::endl;
-    ss << _description << std::endl;
+    ss << "\t" << _description << std::endl;
 
     ss << getItems().description() << std::endl;
 
     ss << getActors().size() << " people" << std::endl;
 
     for(auto it = getActors().begin(); it != getActors().end(); ++it) {
-        ss << it->second->describe();
+        ss << "\t" << it->second->describe();
     }
 
-    ss << std::endl << "Directions:" << std::endl;
-    if(n_N) ss << "N " << n_N->name() << std::endl;
-    if(n_E) ss << "E " << n_E->name() << std::endl;
-    if(n_S) ss << "S " << n_S->name() << std::endl;
-    if(n_W) ss << "W " << n_W->name() << std::endl;
+    ss << std::endl << "Riktningar:" << std::endl;
+    if(n_N) ss << "\t" << "N " << n_N->name() << std::endl;
+    if(n_E) ss << "\t" << "E " << n_E->name() << std::endl;
+    if(n_S) ss << "\t" << "S " << n_S->name() << std::endl;
+    if(n_W) ss << "\t" << "W " << n_W->name() << std::endl;
 
 
     return ss.str();

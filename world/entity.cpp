@@ -160,7 +160,7 @@ std::string Container::description() const {
     ss << items.size() << " pryl(ar):" << std::endl;
 
     for (entities::Physible *p : items) {
-        ss << p->name() << " – " << p->description() << " (" << weight << " kg)" << std::endl;
+        ss << "\t" << p->name() << " – " << p->description() << " (" << weight << " kg)" << std::endl;
     }
 
     return ss.str();

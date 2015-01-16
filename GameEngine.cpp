@@ -52,14 +52,14 @@ void GameEngine::cmd_go(std::vector<std::string> const &words) {
 
     if (str == "n") {
         direction = env::Direction::N;
-    } else if (str == "e") {
+    } else if (str == "ö") {
         direction = env::Direction::E;
     } else if (str == "s") {
         direction = env::Direction::S;
-    } else if (str == "w") {
+    } else if (str == "v") {
         direction = env::Direction::W;
     } else {
-        std::cout << "Okänd riktning! Vill du åka hem?" << std::endl;
+        std::cout << "Okänd riktning! Vill du åka hem? (Möjliga riktningar: n, ö, s, v)" << std::endl;
         return;
     }
 
@@ -67,6 +67,7 @@ void GameEngine::cmd_go(std::vector<std::string> const &words) {
 
     if (e) {
         environment = e;
+        std::cout << "================================================================================================\n";
     } else {
         std::cout << "Finns inget att se åt det hållet." << std::endl;
     }
