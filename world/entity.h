@@ -196,6 +196,8 @@ namespace kris {
 
         class Hero : public Actor {
 
+        private:
+            int sjalvaktning;
         public:
 
             Hero(std::string name);
