@@ -34,7 +34,7 @@ namespace kris {
 
             std::string const &getId() const;
             void setId(std::string &id);
-
+            virtual bool use() = 0;
             virtual ~Entity();
         };
 
@@ -98,10 +98,6 @@ namespace kris {
 
         };
 
-        class Purse : Container {
-
-        };
-
         class HolyArtifact : public Physible {
             virtual bool use();
 
@@ -141,6 +137,8 @@ namespace kris {
             virtual std::string describe();
 
             virtual void kabbla(Hero * hero);
+
+            virtual bool use();
 
             virtual std::string type();
             std::string const &getImageName() const;

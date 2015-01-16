@@ -352,3 +352,8 @@ Entity::~Entity() {
 std::string Hero::type() {
     return "hero";
 }
+
+bool Actor::use() {
+    std::cout << "Släpp mig" << std::endl;
+    return true;
+}
