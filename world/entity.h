@@ -127,6 +127,7 @@ namespace kris {
             Physible* _weakSpot;
 
             entities::Container items;
+            std::vector<KabbalaAttack> attacks;
 
         public:
             Actor(std::string name, std::string desc, Physible* weakS);
@@ -147,6 +148,9 @@ namespace kris {
             void setImageName(std::string &image_name);
 
             entities::Container &getItems() ;
+
+            std::vector<KabbalaAttack> const &getAttacks() const;
+            void setAttacks(std::vector<KabbalaAttack> &attacks);
         };
 
 
@@ -155,8 +159,6 @@ namespace kris {
             bool _givenConsent;
             Party affiliation;
             int resistancePoints = 0;
-
-            std::vector<KabbalaAttack> attacks;
 
         public:
             static std::map<std::string, Party> partyMapping;
@@ -181,10 +183,6 @@ namespace kris {
             int getResistancePoints() const ;
 
             void setResistancePoints(int resistancePoints);
-
-
-            std::vector<KabbalaAttack> const &getAttacks() const;
-            void setAttacks(std::vector<KabbalaAttack> &attacks);
         };
 
         class Oracle : public Actor {

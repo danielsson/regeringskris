@@ -54,9 +54,8 @@ void Loader::read_item(json &obj, Environment* env) {
     }
 }
 
-std::vector<KabbalaAttack> Loader::read_attacks(json & obj, Politician * pol) {
+std::vector<KabbalaAttack> Loader::read_attacks(json & obj, Actor * pol) {
     std::vector<KabbalaAttack> vec;
-
 
     for (json & o : obj) {
         int p = o["probability"];
@@ -106,6 +105,11 @@ void Loader::read_actor(json & obj, Environment * environment) {
         add_managed_pointer(a);
         a->setId(id);
         environment->getActors()[name] = a;
+
+        if (obj.find("kabbala") != obj.end()) {
+            std::vector<KabbalaAttack> attacks = read_attacks(obj["kabbala"]["attacks"], a);
+            a->setAttacks(attacks);
+        }
 
     } else {
         std::cerr << "Unknown actor @type " << obj["@type"] << std::endl;

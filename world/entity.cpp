@@ -210,7 +210,27 @@ Container::TransferError Container::transfer_to(const std::string &name, Contain
 }
 
 void Actor::kabbla(Hero *hero) {
-    std::cout << "Jag vill inte bråka!\n";
+    if (attacks.size() > 0) {
+        int total_sum = 0;
+
+        for (KabbalaAttack const & k : getAttacks())  {
+            total_sum += k.probability;
+        }
+
+        int pick_k = rand() % total_sum;
+
+        int cumulative_sum = 0;
+        for (KabbalaAttack const & k : getAttacks()) {
+            cumulative_sum += k.probability;
+            if (cumulative_sum > pick_k) {
+                std::cout << k.message << std::endl;
+                break;
+            }
+        }
+
+    } else {
+        std::cout << "Jag vill inte bråka!\n";
+    }
 }
 
 void Politician::kabbla(Hero *hero) {
@@ -312,12 +332,12 @@ void Politician::setResistancePoints(int resistancePoints) {
 }
 
 
-std::vector<KabbalaAttack> const &Politician::getAttacks() const {
+std::vector<KabbalaAttack> const &Actor::getAttacks() const {
     return attacks;
 }
 
-void Politician::setAttacks(std::vector<KabbalaAttack> &attacks) {
-    Politician::attacks = attacks;
+void Actor::setAttacks(std::vector<KabbalaAttack> &attacks) {
+    Actor::attacks = attacks;
 }
 
 Oracle::Oracle(std::string &name, std::string &desc, Physible *weakS) : Actor(name, desc, weakS) {

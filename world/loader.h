@@ -23,7 +23,7 @@ namespace kris {
         std::vector<Environment *> envs;
 
         void read_item(json &obj, Environment* env);
-        std::vector<KabbalaAttack> read_attacks(json & obj, Politician * pol);
+        std::vector<KabbalaAttack> read_attacks(json & obj, Actor * pol);
         void read_actor(json & obj, Environment * environment);
         void read_environment(json &obj, std::map<std::string, Environment *> &environments);
         void read_environments(json &obj, std::map<std::string, Environment *> &environments);
