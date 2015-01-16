@@ -170,6 +170,47 @@
           "name": "Väska",
           "description": "En förra-säsongens Michael Kors väska i rosa och guld"
         }
+      ],
+      "actors": [
+        {
+          "@id": "@jounalist",
+          "@type": "Actor",
+
+          "name": "Andreas Cervenka",
+          "description": "Han profilerat sig som en frispråkig krönikör på SvD Näringsliv, där han framförallt skriver om de senaste årens finanskriser, liksom om banker och pengar generellt.",
+          "desires": "@creditcard",
+          "image": "cervenka.txt",
+
+          "kabbala": {
+            "attacks": [
+              {
+                "message": "Vi har inte riktigt råd med att ni leker House of Cards ända fram till våren. Det finns ett och annat att ta tag i.",
+                "sjalvaktning": -50,
+                "resistance": 100,
+                "probability": 50
+              },
+              {
+                "message": "Det är säkert en del riksdagsledamöter som lockas av att köpa en ny fin kostym eller dräkt och kasta sig ut i ännu en valrörelse: en härligt ansvarslös tillvaro fylld av fluffiga löften och en febrig jakt på retweets av de senaste sarkasmerna om motståndarlägret.",
+                "sjalvaktning": -20,
+                "resistance": 40,
+                "probability": 10
+              },
+              {
+                "message": "Plötsligt sitter en hel hålögd medelklass i överbelånade och nyrenoverade hus och bläddrar nervöst i glassiga livstilsmagasin till det rofyllda bruset av en magsårstablett som löses upp i ett glas vatten.",
+                "sjalvaktning": 40,
+                "resistance": -200,
+                "probability": 30
+              },
+              {
+                "message": "De nya reglerna på finansmarknaden är en ordinkontinens som till och med kan få Karl Ove Knausgård att förödmjukad lomma ut till omklädningsrummet.",
+                "sjalvaktning": -10,
+                "resistance": 100,
+                "probability": 20
+              }
+
+            ]
+          }
+        }
       ]
     },
     {
@@ -199,7 +240,7 @@
                 "probability": 20
               },
               {
-                "message": "Anna förklarar att Ronald Reagan och Margaret Thatcher är hennest största idoler.",
+                "message": "Anna förklarar att Ronald Reagan och Margaret Thatcher är hennes största idoler.",
                 "sjalvaktning": -20,
                 "resistance": 40,
                 "probability": 40
