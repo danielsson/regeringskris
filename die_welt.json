@@ -260,26 +260,8 @@
               {
                 "message": "Åsa blir påkommen med att måla sin båt med miljöfarlig färg",
                 "sjalvaktning": 10,
-                "resistance": -200,
-                "probability": 20
-              },
-              {
-                "message": "Åsa kritiserade kärnkraften och vann ett par poäng.",
-                "sjalvaktning": -10,
-                "resistance": 50,
-                "probability": 50
-              },
-              {
-                "message": "Gustav Fridolin hoppar in, och räddar ett par poäng åt åsa genom att hänvisa till sin korta tid som lärare.",
-                "sjalvaktning": -10,
-                "resistance": 200,
-                "probability": 20
-              },
-              {
-                "message": "Åsa ifrågasätter copyrighten på bilden ovan",
-                "sjalvaktning": 10,
-                "resistance": 50,
-                "probability": 20
+                "resistance": -2000,
+                "probability": 100
               }
             ]
           }
@@ -291,7 +273,20 @@
       "@type": "GenericRoom",
 
       "name": "LO-HK",
-      "description": "LOs högkvarter. Här finns det både stora och små höns att prata med."
+      "description": "LOs högkvarter. Här finns det både stora och små höns att prata med.",
+
+      "actors": [
+        {
+          "@id": "@prutt",
+          "@type": "Politician",
+          "name": "Jonas",
+          "description": "Sjöstedt. Är av någon anledning och hänger på LO, varför vet ingen.",
+          "allegiance": "VPK",
+          "desires": "@kommunism",
+          "image": "greider.txt",
+          "resistance": 200
+        }
+      ]
     },
     {
       "@id": "@stuga",

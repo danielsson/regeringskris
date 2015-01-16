@@ -11,8 +11,8 @@ using namespace kris::util;
 using namespace kris::kabbala;
 
 std::pair<std::string, int> KabblaMinigame::getNewspaper() {
-    switch (rand() % 9) {
-        case 0: return std::pair<std::string, int>("Aftonbladet", 10);
+    switch (rand() % 11) {
+        case 0: return std::pair<std::string, int>("Aftonbladet", 8);
         case 1: return std::pair<std::string, int>("Expressen", 3);
         case 2: return std::pair<std::string, int>("Dagens Nyheter", 1);
         default:
@@ -21,9 +21,9 @@ std::pair<std::string, int> KabblaMinigame::getNewspaper() {
         case 5: return std::pair<std::string, int>("Fria Tider", -10);
         case 6: return std::pair<std::string, int>("en våtservett", 0);
         case 7: return std::pair<std::string, int>("Nyheter24", rand() % 5);
-        case 8: return std::pair<std::string, int>("New York Times", 100);
-
-
+        case 8: return std::pair<std::string, int>("New York Times", 15);
+        case 9: return std::pair<std::string, int>("Historieätarna", 15);
+        case 10: return std::pair<std::string, int>("SVT Rapport", 10);
     }
 }
 
@@ -171,7 +171,7 @@ void KabblaMinigame::kabbla() {
         contestant->setResistancePoints(beginning_resistance);
     }
 
-    if (contestant->getResistancePoints() < 0) {
+    if (contestant->getResistancePoints() <= 0) {
         std::cout << "Grattis, du övertygade " << contestant->name() << " om att rösta på ert budgetförslag!\n";
         contestant->giveConsent();
 
@@ -214,6 +214,7 @@ void KabblaMinigame::gift() {
 
             sjalvaktning = 100;
             contestant->setResistancePoints(0);
+
         } else {
             std::cout << contestant->name() << ": 'Vad fan är det här? Nåja, tack eller whatever.'\n";
         }
@@ -231,7 +232,7 @@ void KabblaMinigame::fight() {
 
     int xv = rand() % 100;
 
-    if (hero->getItems().get_item("Kolbit")) {
+    if (hero->getItems().get_item("Kolbit") && xv > 30) {
         std::cout << "Du viftade med kolbiten och vann därför debatten omedelbart.\n";
         hero->getItems().transfer_to("Kolbit", contestant->getItems());
         std::cout << "> Din självaktning: " << 100
