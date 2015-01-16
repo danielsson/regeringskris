@@ -36,11 +36,11 @@ namespace kris {
         public:
             Environment() {};
 
-            virtual std::string directions();
-            virtual Environment*  neighbor(Direction& direction);
+            virtual std::string directions() const;
+            virtual Environment*  neighbor(Direction& direction) const;
             virtual void set_neighbor(Direction d, Environment *);
-            virtual std::string description();
-            virtual std::string name() = 0;
+            virtual std::string description() const;
+            virtual std::string name() const = 0;
 
             static std::string type();
 
@@ -57,13 +57,11 @@ namespace kris {
             virtual ~Environment() {};
 
 
-            entities::Container& getItems() {
-                return items;
-            }
+            entities::Container& getItems();
+            entities::Container const& getItems() const;
 
-            std::map<std::string, entities::Actor*> & getActors() {
-                return actors;
-            }
+            std::map<std::string, entities::Actor*> & getActors();
+            std::map<std::string, entities::Actor*> const &getActors() const;
 
             static Direction fromString(std::string);
         };
@@ -74,14 +72,6 @@ namespace kris {
 
 
         class IndoorEnv : public Environment {
-
-        };
-
-        class Hemicycle : IndoorEnv {
-
-        };
-
-        class OpinionCorridor : IndoorEnv {
 
         };
 
@@ -97,7 +87,7 @@ namespace kris {
                 this->_description = _description;
             }
 
-            virtual std::string name() {
+            virtual std::string name() const{
                 return _name;
             }
 

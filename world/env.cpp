@@ -1,10 +1,12 @@
 #include <iostream>
 #include <sstream>
 #include "env.h"
+#include "entity.h"
 
 using namespace kris::env;
+using namespace kris::entities;
 
-Environment*  Environment::neighbor(Direction& direction) {
+Environment *  Environment::neighbor(Direction& direction) const {
     switch (direction) {
         case N:
             return n_N;
@@ -32,11 +34,11 @@ void Environment::onDrop(kris::entities::Physible* physible) {
 
 }
 
-std::string Environment::directions() {
+std::string Environment::directions() const{
     return "";
 }
 
-std::string Environment::description() {
+std::string Environment::description() const {
     std::stringstream ss;
 
     ss << name() << std::endl;
@@ -95,4 +97,21 @@ void Environment::set_neighbor(Direction d, Environment *environment) {
         case E:
             n_E = environment;
     }
+}
+
+Container& Environment::getItems() {
+    return items;
+}
+
+Container const& Environment::getItems() const {
+    return items;
+}
+
+
+std::map<std::string, Actor*> & Environment::getActors() {
+    return actors;
+}
+
+std::map<std::string, Actor*> const &Environment::getActors() const {
+    return actors;
 }
