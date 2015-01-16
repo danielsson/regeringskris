@@ -72,3 +72,9 @@ Stefan Löfven (du) har precis blivit vald, med en hårsmåns skillnad, till Sve
 Du har satt ihop en kompetent(?) regering, och nu gäller det att samla stöd för er budget ifrån
 de andra partierna. Lycka till.
 
+Ditt mål är att vinna budgetomröstningen (se kommandot rösta). För att det ska vara möjligt,
+måste du övertyga minst hälften av politikerna om att rösta på ert förslag. För att övertyga
+använd kommandot käbbla [namn].
+
+Skriv hjälp för att få en lista på tillgängliga kommandon.
+

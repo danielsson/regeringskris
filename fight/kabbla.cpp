@@ -23,7 +23,7 @@ std::pair<std::string, int> KabblaMinigame::getNewspaper() {
         case 7: return std::pair<std::string, int>("Nyheter24", rand() % 5);
         case 8: return std::pair<std::string, int>("New York Times", 15);
         case 9: return std::pair<std::string, int>("Historieätarna", 15);
-        case 10: return std::pair<std::string, int>("SVT Rapport", 10);
+        case 10:return std::pair<std::string, int>("SVT Rapport", 10);
     }
 }
 
@@ -98,10 +98,12 @@ void KabblaMinigame::contestant_move() {
             std::cout << contestant->name() << " kallade dig för en tölp i aftonbladet.\n";
             std::cout << "Det är effektivt\n";
             sjalvaktning -= 30;
-        } else if (r < 90) {
+        } else if (false) {
             std::cout << contestant->name() << " gav dig en kolbit.\n";
             sjalvaktning -= 10;
-            hero->getItems().add_item(new entities::GenericItem("Kolbit", "En helt vanlig kolbit. Eller ett iskallt politiskt mordvapen.", 1));
+            GenericItem *item = new entities::GenericItem("Kolbit", "En helt vanlig kolbit. Eller ett iskallt politiskt mordvapen.", 1);
+
+            hero->getItems().add_item(item);
         } else {
             std::cout << contestant->name() << " snackade skit om dig, men råkade göra en pudel.\n";
             sjalvaktning += 50;
