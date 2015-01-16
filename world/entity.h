@@ -35,7 +35,7 @@ namespace kris {
             std::string const &getId() const;
             void setId(std::string &id);
 
-            virtual ~Entity() {}
+            virtual ~Entity();
         };
 
 

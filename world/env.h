@@ -10,6 +10,10 @@
 
 namespace kris {
 
+    namespace entities {
+        class Container;
+    }
+
     namespace env {
         enum Direction {
             N, E, S, W

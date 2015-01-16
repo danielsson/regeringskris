@@ -100,6 +100,7 @@ void Loader::read_actor(json & obj, Environment * environment) {
 
         environment->getActors()[name] = pol;
 
+
     } else if (obj["@type"] == "Actor") {
         Actor* a = new Actor(name, description, nullptr);
         add_managed_pointer(a);

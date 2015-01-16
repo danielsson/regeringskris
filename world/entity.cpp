@@ -324,3 +324,7 @@ Oracle::Oracle(std::string &name, std::string &desc, Physible *weakS) : Actor(na
 }
 
 Hero::Hero(std::string name) : Actor(name) {};
+
+Entity::~Entity() {
+
+}
