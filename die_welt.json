@@ -344,6 +344,12 @@
           "name": "Hjärta",
           "description": "Ett hjärta e alltid rött, Ett hjärta har alltid rätt, Ett hjärta stinker blod och svett, Ett hjärta har alltid rätt.",
           "moveable": false
+        },
+        {
+          "@id": "@kolbit",
+          "@type": "GenericItem",
+          "name": "Kolbit",
+          "description": "En helt vanlig kolbit. Eller ett iskallt politiskt mordvapen."
         }
       ],
 

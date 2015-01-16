@@ -251,8 +251,8 @@ void KabblaMinigame::fight() {
 
     std::pair<std::string, int> paper = getNewspaper();
 
-    if (xv % 6 == 2) {
-        std::cout << paper.first << " skriver att vad du förmodligen menade när du sade att gemenskapen ska stärkas, egentligen är antisemtiskt. \n";
+    if (xv % 5 == 1) {
+        std::cout << paper.first << " kritiserade din retoriska förmåga\n";
         std::cout << "> Din självaktning: " << (-3 * paper.second)
                 << " | " << contestant->name() << "s resistans: " << (3 * paper.second) << std::endl;
 

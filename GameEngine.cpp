@@ -180,7 +180,7 @@ void GameEngine::cmd_tally(std::vector<std::string> const &vector) {
     if (environment->name() != "Plenisalen") {
         std::cout << "========================================================================\n";
         std::cout << "EXTRA: Statsminister Löfven försöker starta riksdagsomröstning ifrån\n";
-        std::cout << environment->name() << ". Mer om detta i Aftonbladet +Minus!\n";
+        std::cout << environment->name() << ". Mer om detta i Aftonbladet Minus!\n";
         std::cout << "========================================================================\n";
         return;
     }
