@@ -348,3 +348,7 @@ Hero::Hero(std::string name) : Actor(name) {};
 Entity::~Entity() {
 
 }
+
+std::string Hero::type() {
+    return "hero";
+}

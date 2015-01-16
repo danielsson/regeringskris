@@ -192,6 +192,10 @@ void GameEngine::cmd_tally(std::vector<std::string> const &vector) {
 
     int count_for = 0;
     int count_against = 0;
+
+    std::cout << hero->name() << "\tär för budgeten.\n";
+    count_for++;
+
     for (Actor * a : loader.getActors()) {
         if(a->type() == "politician") {
             Politician * p = (Politician *) a;
@@ -204,7 +208,6 @@ void GameEngine::cmd_tally(std::vector<std::string> const &vector) {
                 std::cout << "emot budgeten.\n";
                 count_against++;
             }
-
         }
     }
 
@@ -251,6 +254,7 @@ GameEngine::GameEngine() : loader("die_welt.json") {
     hero = new entities::Hero("Löfven");
 
     environment = loader.construct();
+    //loader.add_managed_pointer(hero);
 
     init_router();
 }

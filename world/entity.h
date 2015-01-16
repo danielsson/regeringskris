@@ -201,6 +201,7 @@ namespace kris {
         public:
 
             Hero(std::string name);
+            virtual std::string type();
 
         };
 
