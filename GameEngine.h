@@ -28,7 +28,6 @@ namespace kris {
         std::map<std::string, CommandDealer> router;
 
         void init_router();
-        void print_welcome();
 
         std::vector<std::string> tokenize(const std::string &);
 
