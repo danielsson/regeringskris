@@ -1,7 +1,7 @@
-#import "world/entity.h"
-#import "world/env.h"
+#include "world/entity.h"
+#include "world/env.h"
 #include "world/loader.h"
-#import <iostream>
+#include <iostream>
 #include <map>
 
 #ifndef GAME_ENGINE_GUARD

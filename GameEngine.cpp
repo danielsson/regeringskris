@@ -1,9 +1,10 @@
 #include <iostream>
-#import "GameEngine.h"
-#import <memory>
-#import <fstream>
+#include "GameEngine.h"
+#include <memory>
+#include <fstream>
 #include <sstream>
 #include <algorithm>
+#include <time.h>
 
 using namespace kris;
 using namespace kris::util;

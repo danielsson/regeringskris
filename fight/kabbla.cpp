@@ -224,9 +224,6 @@ void KabblaMinigame::gift() {
         std::cout << "Du försökte ge bort en " << thing << " men hade ingen sådan.\n";
         std::cout << contestant->name() << " var föga imponerad av gesten.\n";
     }
-
-
-
 }
 
 void KabblaMinigame::fight() {

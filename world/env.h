@@ -44,6 +44,7 @@ namespace kris {
             virtual Environment*  neighbor(Direction& direction) const;
             virtual void set_neighbor(Direction d, Environment *);
             virtual std::string description() const;
+
             virtual std::string name() const = 0;
 
             static std::string type();

@@ -1,0 +1,15 @@
+main.o: main.cpp GameEngine.h world/entity.h world/../util.h world/env.h \
+  world/loader.h world/../json/json.h
+GameEngine.o: GameEngine.cpp GameEngine.h world/entity.h world/../util.h \
+  world/env.h world/loader.h world/../json/json.h
+entity.o: world/entity.cpp world/entity.h world/../util.h \
+  world/../fight/kabbla.h world/../fight/../world/env.h \
+  world/../GameEngine.h world/../world/loader.h world/../json/json.h
+env.o: world/env.cpp world/env.h world/../util.h world/entity.h
+loader.o: world/loader.cpp world/env.h world/../util.h world/entity.h \
+  world/loader.h world/../json/json.h
+kabbla.o: fight/kabbla.cpp fight/kabbla.h fight/../world/entity.h \
+  fight/../world/../util.h fight/../world/env.h fight/../json/json.h \
+  fight/../util.h
+util.o: util.cpp util.h
+json.o: json/json.cc json/json.h
