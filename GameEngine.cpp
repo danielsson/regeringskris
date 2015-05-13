@@ -4,7 +4,7 @@
 #include <fstream>
 #include <sstream>
 #include <algorithm>
-#include <time.h>
+#include <ctime>
 
 using namespace kris;
 using namespace kris::util;
