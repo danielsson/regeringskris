@@ -318,7 +318,7 @@
 
       "actors": [
         {
-          "@id": "@prutt",
+          "@id": "@jonas",
           "@type": "Politician",
           "name": "Jonas",
           "description": "Sjöstedt. Är av någon anledning och hänger på LO, varför vet ingen.",
@@ -364,6 +364,58 @@
           "resistance": 0
         }
       ]
+    },
+    {
+      "@id": "@lada",
+      "@type": "GenericRoom",
+
+      "name": "En Tom Lada",
+      "description": "En typisk svensk hölada. Rödmålad med vita knutar. Helt tom.",
+
+
+      "items": [
+        {
+          "@id": "@peng",
+          "@type": "GenericItem",
+          "name": "En femtioöring",
+          "description": "En helt vanlig femtioöring. Stefan Ingves kastade den till dig när du klev in."
+        }
+      ],
+
+      "actors": [
+        {
+          "@id": "@ingves",
+          "@type": "Politician",
+          "name": "Stefan",
+          "description": "Stefan Ingves: Riksbankschef",
+          "allegiance": "R",
+          "image": "greider.txt",
+          "resistance": 200000,
+
+          "kabbala": {
+            "attacks": [
+              {
+                "message": "Stefan Ingves maler monotont på om konjunkturutvecklingen på arktis. Eller något annat, ingen orkar riktigt lyssna.",
+                "sjalvaktning": 0,
+                "resistance": 0,
+                "probability": 20
+              },
+              {
+                "message": "Ingves refererar till sin egenförfattade bladvändare: \"Den oreglerade kreditmarknaden : en expertrapport från 1980 års kreditpolitiska utredning\" ",
+                "sjalvaktning": 2,
+                "resistance": 900,
+                "probability": 30
+              },
+              {
+                "message": "Inflation is way below our target of 2 percent, but on the other hand we just do not see deflation around the corner. ",
+                "sjalvaktning": -9,
+                "resistance": 10000,
+                "probability": 10
+              }
+            ]
+          }
+        }
+      ]
     }
 
   ],
@@ -392,7 +444,8 @@
       "W": "@stuga"
     },
     "@sturep": {
-      "E": "@torget"
+      "E": "@torget",
+      "W": "@lada"
     },
     "@lohk": {
       "W": "@torget"
@@ -402,6 +455,9 @@
     },
     "@stuga": {
       "E": "@norrmalarstrand"
+    },
+    "@lada": {
+      "S": "@kontor"
     }
 
   }
